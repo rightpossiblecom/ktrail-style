@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { siteConfig } from '@/lib/site-config';
+import { siteConfig } from '@/config/site';
 
 export function QuoteSlab() {
 	const { testimonials } = siteConfig;
@@ -16,7 +16,6 @@ export function QuoteSlab() {
 
 	return (
 		<section className="relative overflow-hidden bg-[var(--color-surface)] py-24 lg:py-40">
-			{/* Oversized faded quote glyph */}
 			<div className="pointer-events-none absolute -top-20 -left-10 select-none lg:-top-40 lg:-left-16">
 				<span className="heading-display block text-[20rem] leading-none text-[var(--color-copper)]/8 lg:text-[34rem]">
 					&ldquo;
@@ -26,7 +25,7 @@ export function QuoteSlab() {
 			<div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
 				<div className="flex items-end justify-between border-b border-[var(--color-line-strong)] pb-6">
 					<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-copper)]">
-						What People Say
+						Early signals
 					</p>
 					<span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-[var(--color-cream-dim)]">
 						{String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}

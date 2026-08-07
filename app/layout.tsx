@@ -1,24 +1,23 @@
 import type { Metadata } from 'next';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
+import { AppShell } from '@/components/layout/AppShell';
 import { Providers } from '@/components/providers';
-import { siteConfig } from '@/lib/site-config';
+import { siteConfig } from '@/config/site';
 import './globals.css';
 
-const title = `${siteConfig.name} — ${siteConfig.tagline}`;
+const title = `${siteConfig.brandName} — ${siteConfig.tagline}`;
 
 export const metadata: Metadata = {
 	title: {
 		default: title,
-		template: `%s | ${siteConfig.name}`,
+		template: `%s | ${siteConfig.brandName}`,
 	},
 	description: siteConfig.description,
 	metadataBase: new URL(siteConfig.url),
 	openGraph: {
 		title,
 		description: siteConfig.description,
-		siteName: siteConfig.name,
-		locale: 'en_US',
+		siteName: siteConfig.brandName,
+		locale: 'en_NG',
 		type: 'website',
 	},
 	twitter: {
@@ -40,32 +39,29 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				{/* Allow parent frames to control scrolling via postMessage */}
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `window.addEventListener("message",function(e){if(e.data&&e.data.type==="scrollTo"&&e.data.id){var el=document.getElementById(e.data.id);if(el){var top=el.getBoundingClientRect().top+window.scrollY;window.scrollTo({top:top,behavior:"smooth"})}}if(e.data&&e.data.type==="scrollTop"){window.scrollTo({top:0,behavior:"smooth"})}});`,
 					}}
 				/>
 				<Providers>
-					<Header />
-					<main>{children}</main>
-					<Footer />
+					<AppShell>{children}</AppShell>
 				</Providers>
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
 						__html: JSON.stringify({
 							'@context': 'https://schema.org',
-							'@type': 'LocalBusiness',
-							name: siteConfig.name,
+							'@type': 'Organization',
+							name: siteConfig.legalName,
+							alternateName: siteConfig.brandName,
 							description: siteConfig.description,
 							url: siteConfig.url,
-							telephone: siteConfig.contact.phone,
-							email: siteConfig.contact.email,
+							email: siteConfig.supportEmail,
 							address: {
 								'@type': 'PostalAddress',
-								streetAddress: siteConfig.contact.address.split('\n')[0],
-								addressLocality: siteConfig.contact.address.split('\n')[1]?.trim(),
+								streetAddress: siteConfig.address,
+								addressCountry: 'NG',
 							},
 						}),
 					}}

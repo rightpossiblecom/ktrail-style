@@ -3,6 +3,10 @@
  *
  * Every hardcoded shop name, tagline, contact detail, and homepage copy
  * is sourced from here so you can rebrand the entire template in one place.
+ *
+ * KTrail Phase 03 cutover: Cloud Grant brand/copy/demo seeds live in
+ * `config/site.ts` (+ `config/demo-flow.ts`). Keep this Frisor-shaped export
+ * working until marketing pages migrate to the new config spine.
  */
 
 export const siteConfig = {
