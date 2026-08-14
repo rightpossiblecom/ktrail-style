@@ -4,9 +4,9 @@ import { LeadForm } from '@/components/LeadForm';
 export default function DemoPage() {
 	return (
 		<FormPageShell
-			eyebrow="Demo"
-			title="Request a demo"
-			body="See the multi-barber dashboard and AI style preview loop on a guided walkthrough."
+			eyebrow="Walkthrough"
+			title="Book a walkthrough"
+			body="See the multi-barber dashboard and AI style preview loop with the team."
 		>
 			<LeadForm type="demo" />
 		</FormPageShell>

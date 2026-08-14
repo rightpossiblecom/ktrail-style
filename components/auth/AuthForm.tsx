@@ -19,7 +19,7 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 		const email = String(fd.get('email') || '').trim();
 		const password = String(fd.get('password') || '').trim();
 		if (!email || !password) {
-			setError('Enter any email and password for this demo.');
+			setError('Enter your email and password.');
 			return;
 		}
 		setSession(email);
@@ -33,10 +33,12 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 					{siteConfig.brandName}
 				</p>
 				<h1 className="heading-display mt-4 text-3xl">
-					{mode === 'login' ? 'Sign in' : 'Create demo account'}
+					{mode === 'login' ? 'Sign in to your account' : 'Create your account'}
 				</h1>
 				<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
-					Wave 1 fake auth — any credentials open the screen-record dashboard.
+					{mode === 'login'
+						? 'Use your email and password to open your shop dashboard.'
+						: 'Create an account to manage bookings, barbers, and style previews.'}
 				</p>
 				<form onSubmit={onSubmit} className="mt-8 space-y-5">
 					<div>
@@ -76,7 +78,7 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 						type="submit"
 						className="w-full rounded-full bg-[var(--color-copper)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg-deep)] hover:bg-[var(--color-copper-bright)]"
 					>
-						{mode === 'login' ? 'Enter dashboard' : 'Sign up & enter'}
+						{mode === 'login' ? 'Sign in' : 'Create account'}
 					</button>
 				</form>
 				<p className="mt-6 text-center text-sm text-[var(--color-cream-dim)]">

@@ -10,9 +10,9 @@ export default function PricingPage() {
 				<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-copper)]">
 					Pricing
 				</p>
-				<h1 className="heading-display mt-6 text-5xl lg:text-7xl">{brandName} access</h1>
+				<h1 className="heading-display mt-6 text-5xl lg:text-7xl">{brandName} plans</h1>
 				<p className="mt-6 max-w-2xl text-base text-[var(--color-cream-muted)]">
-					Early-stage paths into the product — waitlist, demo, and early access. Not live self-serve billing.
+					Log in to your shop, create an account, or book a walkthrough with the team.
 				</p>
 			</section>
 

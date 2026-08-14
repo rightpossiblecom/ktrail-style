@@ -12,10 +12,10 @@ export function PricingPreview() {
 						Pricing
 					</p>
 					<h2 className="heading-display mt-4 text-3xl text-[var(--color-cream)] lg:text-5xl">
-						Early-stage access
+						Plans for shops
 					</h2>
 					<p className="mt-3 max-w-xl text-sm text-[var(--color-cream-muted)]">
-						No fake live SaaS billing. Pick a path into the waitlist, demo, or early access.
+						Log in, create an account, or book a walkthrough — pick the path that fits your shop.
 					</p>
 				</div>
 				<div className="mt-12 grid gap-6 lg:grid-cols-3">

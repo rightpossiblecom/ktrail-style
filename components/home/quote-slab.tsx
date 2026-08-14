@@ -25,7 +25,7 @@ export function QuoteSlab() {
 			<div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
 				<div className="flex items-end justify-between border-b border-[var(--color-line-strong)] pb-6">
 					<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-copper)]">
-						Early signals
+						From the chairs
 					</p>
 					<span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-[var(--color-cream-dim)]">
 						{String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}

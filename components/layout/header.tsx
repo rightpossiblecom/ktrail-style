@@ -60,16 +60,16 @@ export function Header() {
 						<div className="flex items-center gap-4">
 							<div className="hidden items-center gap-5 md:flex">
 								<Link
-									href="/waitlist"
+									href={siteConfig.hero.secondaryCta.href}
 									className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-cream)]"
 								>
-									Join waitlist
+									{siteConfig.hero.secondaryCta.label}
 								</Link>
 								<Link
-									href="/demo"
+									href={siteConfig.hero.cta.href}
 									className="rounded-full bg-[var(--color-gold)] px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg)] transition-all hover:bg-[var(--color-gold-bright)]"
 								>
-									Request demo
+									{siteConfig.hero.cta.label}
 								</Link>
 							</div>
 
@@ -129,18 +129,18 @@ export function Header() {
 								className="mt-4 flex flex-col items-center gap-4"
 							>
 								<Link
-									href="/waitlist"
+									href={siteConfig.hero.cta.href}
 									onClick={() => setIsMobileMenuOpen(false)}
 									className="rounded-full bg-[var(--color-gold)] px-10 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-bg)] transition-all hover:bg-[var(--color-gold-bright)]"
 								>
-									Join waitlist
+									{siteConfig.hero.cta.label}
 								</Link>
 								<Link
-									href="/demo"
+									href={siteConfig.hero.secondaryCta.href}
 									onClick={() => setIsMobileMenuOpen(false)}
 									className="text-sm font-medium text-[var(--color-cream-muted)] hover:text-[var(--color-gold)]"
 								>
-									Request demo
+									{siteConfig.hero.secondaryCta.label}
 								</Link>
 							</motion.div>
 						</div>

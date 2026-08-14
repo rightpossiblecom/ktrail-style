@@ -12,7 +12,7 @@ function formatAddress(loc: Location): string[] {
 	const cityLine = [loc.city, loc.state].filter(Boolean).join(', ');
 	const cityPostal = [cityLine, loc.postalCode].filter(Boolean).join(' ');
 	if (cityPostal) lines.push(cityPostal);
-	return lines.length > 0 ? lines : ['Address coming soon'];
+	return lines.length > 0 ? lines : ['Address not listed'];
 }
 
 function cityLabel(loc: Location): string {

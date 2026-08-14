@@ -9,9 +9,9 @@ const fieldClass =
 const labelClass = 'block text-[0.65rem] font-medium uppercase tracking-[0.22em] text-[var(--color-cream-dim)]';
 
 const CTA: Record<LeadFormType, string> = {
-	waitlist: 'Join waitlist',
-	demo: 'Request demo',
-	'early-access': 'Apply for early access',
+	waitlist: 'Send details',
+	demo: 'Book a walkthrough',
+	'early-access': 'Talk to sales',
 };
 
 export function LeadForm({ type }: { type: LeadFormType }) {
@@ -52,9 +52,9 @@ export function LeadForm({ type }: { type: LeadFormType }) {
 				<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-copper)]">
 					Received
 				</p>
-				<p className="heading-display mt-4 text-2xl text-[var(--color-cream)]">You&apos;re on the list</p>
+				<p className="heading-display mt-4 text-2xl text-[var(--color-cream)]">Thanks — we&apos;ll be in touch</p>
 				<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
-					We saved your details locally for this Wave 1 demo. No server backend yet.
+					We received your details and will follow up about your shop.
 				</p>
 			</div>
 		);
@@ -129,14 +129,14 @@ export function LeadForm({ type }: { type: LeadFormType }) {
 			{type === 'early-access' && (
 				<div>
 					<label className={labelClass} htmlFor="reason">
-						Why early access?
+						What should we know?
 					</label>
 					<textarea
 						id="reason"
 						name="reason"
 						rows={3}
 						className={fieldClass}
-						placeholder="Ready to pilot when seats open…"
+						placeholder="Shop size, cities, what you want to see…"
 					/>
 				</div>
 			)}

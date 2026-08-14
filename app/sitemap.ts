@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		'/team',
 		'/pricing',
 		'/about',
+		'/login',
+		'/signup',
 		'/waitlist',
 		'/demo',
 		'/early-access',

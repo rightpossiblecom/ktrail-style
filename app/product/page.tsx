@@ -136,16 +136,16 @@ export default function ProductPage() {
 					</ul>
 					<div className="mt-12 flex flex-wrap gap-4">
 						<Link
-							href="/demo"
+							href="/login"
 							className="rounded-full bg-[var(--color-copper)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg-deep)]"
 						>
-							Request demo
+							Log in
 						</Link>
 						<Link
-							href="/waitlist"
+							href="/signup"
 							className="link-underline text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-cream)]"
 						>
-							Join waitlist
+							Create account
 						</Link>
 					</div>
 				</div>

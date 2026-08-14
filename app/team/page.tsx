@@ -40,10 +40,10 @@ export default function TeamPage() {
 
 				<div className="mt-12">
 					<Link
-						href="/demo"
+						href="/login"
 						className="inline-flex rounded-full bg-[var(--color-copper)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg-deep)]"
 					>
-						Request demo
+						Log in
 					</Link>
 				</div>
 			</section>

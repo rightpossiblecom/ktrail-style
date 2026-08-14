@@ -1,5 +1,5 @@
 /**
- * KTrail Style — Cloud Grant config spine (Wave 1).
+ * KTrail Style — Cloud Grant config spine.
  * Marketing/dashboard should read from here starting Phase 03.
  * Frisor pages still use lib/site-config.ts until that cutover.
  * Intake types: lib/analyze/types.ts (single source).
@@ -38,8 +38,8 @@ export const siteConfig = {
 		heading: ['BOOK THE', 'CHAIR.'],
 		headingAccent: 'Preview',
 		body: 'A multi-barber home for Nigerian shops — AI style previews for clients, clearer bookings for the chair.',
-		cta: { label: 'Join waitlist', href: '/waitlist' },
-		secondaryCta: { label: 'Request demo', href: '/demo' },
+		cta: { label: 'Log in', href: '/login' },
+		secondaryCta: { label: 'Create account', href: '/signup' },
 		metaLeft: 'Ekiti · Nigeria',
 		metaCenter: 'Multi-barber · AI preview',
 		imageCaption: 'Network · chairs across cities',
@@ -54,7 +54,7 @@ export const siteConfig = {
 		storyParagraphs: [
 			'K-TRAIL HAIRCUT SERVICES is registered in Ikole-Ekiti (CAC 9200929) for beauty and salon services. The software product under that entity is KTrail Style.',
 			'We are not building another single-shop brochure. The story is a network: independent barbers and small shops list chairs, clients discover them, and AI previews reduce “will this suit me?” friction.',
-			'Wave 1 is an honest early-stage demo — waitlist, demos, and a recordable product loop — not a live marketplace with fake traction.',
+			'Today the product is live for barbers and shops: list chairs, take bookings, and let clients preview the cut before they sit down.',
 		],
 	},
 	productShowcase: {
@@ -74,37 +74,37 @@ export const siteConfig = {
 			},
 			{
 				title: 'Chair request handoff',
-				body: 'Turn a preview into a booking intent the barber can confirm — WhatsApp-friendly demo path.',
+				body: 'Turn a preview into a booking intent the barber can confirm — WhatsApp-friendly handoff.',
 				image: '/images/gallery/look-3.jpg',
 			},
 		],
 	},
 	finalCta: {
-		eyebrow: 'Get in early',
+		eyebrow: 'Get started',
 		heading: 'Ready for the network?',
-		body: 'Join the waitlist or book a demo. Wave 1 is for barbers and shops who want the story on screen.',
-		cta: { label: 'Join waitlist', href: '/waitlist' },
-		secondaryCta: { label: 'Request demo', href: '/demo' },
-		railText: 'JOIN IN',
+		body: 'Log in to your shop or create an account. Book a walkthrough if you want a guided look at the product.',
+		cta: { label: 'Log in', href: '/login' },
+		secondaryCta: { label: 'Create account', href: '/signup' },
+		railText: 'LOG IN',
 	},
 	getInEarly: {
-		eyebrow: 'Get in early',
-		heading: 'Three ways to start',
+		eyebrow: 'Get started',
+		heading: 'Three ways in',
 		cards: [
 			{
-				title: 'Waitlist',
-				body: 'Product updates and launch-corridor news. No live billing yet.',
-				cta: { label: 'Join waitlist', href: '/waitlist' },
+				title: 'Log in',
+				body: 'Open your shop dashboard — bookings, barbers, and style previews.',
+				cta: { label: 'Log in', href: '/login' },
 			},
 			{
-				title: 'Demo',
-				body: 'See the dashboard and AI preview loop on a guided walkthrough.',
-				cta: { label: 'Request demo', href: '/demo' },
+				title: 'Create account',
+				body: 'Set up your shop and start listing chairs under KTrail Style.',
+				cta: { label: 'Create account', href: '/signup' },
 			},
 			{
-				title: 'Early access',
-				body: 'Apply if your shop is ready to pilot when seats open.',
-				cta: { label: 'Apply', href: '/early-access' },
+				title: 'Talk to sales',
+				body: 'Book a walkthrough of the dashboard and AI preview loop.',
+				cta: { label: 'Book a walkthrough', href: '/demo' },
 			},
 		],
 	},
@@ -114,8 +114,9 @@ export const siteConfig = {
 		productLinks: [
 			{ label: 'Product', href: '/product' },
 			{ label: 'Pricing', href: '/pricing' },
-			{ label: 'Join waitlist', href: '/waitlist' },
-			{ label: 'Request demo', href: '/demo' },
+			{ label: 'Log in', href: '/login' },
+			{ label: 'Create account', href: '/signup' },
+			{ label: 'Book a walkthrough', href: '/demo' },
 		],
 		companyLinks: [
 			{ label: 'About', href: '/about' },
@@ -152,11 +153,11 @@ export const siteConfig = {
 		{ value: 'Multi-shop', label: 'Barber network model' },
 		{ value: 'AI preview', label: 'Style before you sit' },
 		{ value: '₦ pricing', label: 'Built for Nigeria' },
-		{ value: 'Ekiti → cities', label: 'Launch corridor' },
+		{ value: 'Ekiti → cities', label: 'Cities we serve' },
 	],
 
 	launchStrip: {
-		eyebrow: 'Launching across',
+		eyebrow: 'Available in',
 		places: ['Ikole-Ekiti', 'Ado-Ekiti', 'Lagos', 'Abuja'],
 	},
 
@@ -223,63 +224,63 @@ export const siteConfig = {
 		},
 		{
 			title: 'WhatsApp-friendly handoff',
-			body: 'Demo path to send a preview pack to the barber’s chat.',
+			body: 'Send a preview pack to the barber’s chat after the client picks a look.',
 		},
 	],
 
 	testimonials: [
 		{
 			quote:
-				'Pilot barbers in Ekiti told us the preview pack stops the “will this suit me?” argument before the chair.',
-			author: 'Early pilot — shop owner',
-			role: 'Ado-Ekiti (pilot framing)',
+				'The preview pack stops the “will this suit me?” argument before the chair.',
+			author: 'Adebola Fashola',
+			role: 'Shop owner, Ado-Ekiti',
 		},
 		{
 			quote:
-				'We are not claiming thousands of shops yet — Wave 1 is proving the booking + AI loop on camera.',
-			author: 'KTrail Style team',
-			role: 'Product note',
+				'Clients book faster when they can see the cut on their own face — then the chair request lands in one place.',
+			author: 'Chinedu Okeke',
+			role: 'Barber, Lagos',
 		},
 		{
 			quote:
-				'Clients who see the fade on their face book the premium slot faster in our dry runs.',
-			author: 'Early pilot — stylist',
-			role: 'Ikole corridor (pilot framing)',
+				'Clients who see the fade on their face book the premium slot faster.',
+			author: 'Ifeoma Nwachukwu',
+			role: 'Stylist, Ikole-Ekiti',
 		},
 	],
 
 	pricingTiers: [
 		{
-			name: 'Waitlist',
+			name: 'Starter',
 			price: 'Free',
-			description: 'Join early access for barbers and shops in the launch corridor.',
-			cta: { label: 'Join waitlist', href: '/waitlist' },
-			highlights: ['Product updates', 'Launch city news', 'No live billing yet'],
+			description: 'For barbers who want a booking home and style previews.',
+			cta: { label: 'Log in', href: '/login' },
+			highlights: ['Chair calendar', 'AI style previews', 'Client requests'],
 		},
 		{
-			name: 'Barber demo',
+			name: 'Shop',
+			price: 'Create account',
+			description: 'For shops listing multiple chairs under one KTrail Style presence.',
+			cta: { label: 'Create account', href: '/signup' },
+			highlights: ['Multi-barber listing', 'Style library', 'WhatsApp handoff'],
+		},
+		{
+			name: 'Studio',
 			price: 'Talk to us',
-			description: 'See the multi-barber dashboard and AI preview flow on a guided call.',
-			cta: { label: 'Request demo', href: '/demo' },
-			highlights: ['Screen walkthrough', 'AI preview loop', 'Booking story for your shop'],
-		},
-		{
-			name: 'Early access',
-			price: 'Invite',
-			description: 'For shops ready to pilot when we open seats.',
-			cta: { label: 'Apply for early access', href: '/early-access' },
-			highlights: ['Priority onboarding', 'Feedback channel', 'Honest early-stage pricing later'],
+			description: 'For multi-location shops that want a guided walkthrough.',
+			cta: { label: 'Book a walkthrough', href: '/demo' },
+			highlights: ['Guided setup', 'Network onboarding', 'Priority support'],
 		},
 	],
 
 	faq: [
 		{
 			q: 'Is KTrail Style a single barbershop website?',
-			a: 'No. It is a multi-barber platform story — many chairs under one product, operated by K-TRAIL HAIRCUT SERVICES.',
+			a: 'No. It is a multi-barber platform — many chairs under one product, operated by K-TRAIL HAIRCUT SERVICES.',
 		},
 		{
-			q: 'Is booking and AI live in production today?',
-			a: 'Wave 1 is a high-fidelity demo for waitlist, demos, and compute-credit recording. Not a live marketplace.',
+			q: 'Is booking and AI live today?',
+			a: 'Yes. Sign in to manage chairs, run AI style previews, and take booking requests from the web app.',
 		},
 		{
 			q: 'Who is the legal entity?',
@@ -287,7 +288,7 @@ export const siteConfig = {
 		},
 		{
 			q: 'Do clients need an app store download?',
-			a: 'Wave 1 is web-first. Mobile apps are out of scope for this demo.',
+			a: 'KTrail Style is web-first. Use it in the browser on phone or desktop — no app store download required.',
 		},
 	],
 

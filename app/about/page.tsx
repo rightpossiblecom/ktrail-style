@@ -60,16 +60,16 @@ export default function AboutPage() {
 					</div>
 					<div className="mt-10 flex flex-wrap gap-4">
 						<Link
-							href="/waitlist"
+							href="/login"
 							className="rounded-full bg-[var(--color-copper)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg-deep)]"
 						>
-							Join waitlist
+							Log in
 						</Link>
 						<Link
-							href="/demo"
+							href="/signup"
 							className="link-underline text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-cream)]"
 						>
-							Request demo
+							Create account
 						</Link>
 					</div>
 				</div>

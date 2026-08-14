@@ -38,7 +38,7 @@ export default function DashboardAccountPage() {
 				</div>
 				<div>
 					<p className="text-[0.6rem] uppercase tracking-[0.2em] text-[var(--color-cream-dim)]">Plan</p>
-					<p className="mt-1 text-[var(--color-cream)]">Early access demo (not live billing)</p>
+					<p className="mt-1 text-[var(--color-cream)]">Shop</p>
 				</div>
 				<div>
 					<p className="text-[0.6rem] uppercase tracking-[0.2em] text-[var(--color-cream-dim)]">
