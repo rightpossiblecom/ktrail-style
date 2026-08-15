@@ -29,8 +29,10 @@ export const siteConfig = {
 	logo: { text: 'KTrail', accent: ' Style' },
 	nav: [
 		{ href: '/product', label: 'Product' },
-		{ href: '/team', label: 'Team' },
+		{ href: '/solutions', label: 'Solutions' },
+		{ href: '/customers', label: 'Customers' },
 		{ href: '/pricing', label: 'Pricing' },
+		{ href: '/resources', label: 'Resources' },
 		{ href: '/about', label: 'About' },
 	],
 	hero: {
@@ -113,16 +115,25 @@ export const siteConfig = {
 			'Multi-barber booking and AI style previews for Nigerian barbers — operated by K-TRAIL HAIRCUT SERVICES.',
 		productLinks: [
 			{ label: 'Product', href: '/product' },
+			{ label: 'Features', href: '/features' },
+			{ label: 'Solutions', href: '/solutions' },
 			{ label: 'Pricing', href: '/pricing' },
 			{ label: 'Log in', href: '/login' },
 			{ label: 'Create account', href: '/signup' },
-			{ label: 'Book a walkthrough', href: '/demo' },
+		],
+		resourceLinks: [
+			{ label: 'Resources', href: '/resources' },
+			{ label: 'Blog', href: '/blog' },
+			{ label: 'Help', href: '/help' },
+			{ label: 'Security', href: '/security' },
+			{ label: 'Customers', href: '/customers' },
 		],
 		companyLinks: [
 			{ label: 'About', href: '/about' },
 			{ label: 'Team', href: '/team' },
 			{ label: 'Privacy', href: '/privacy' },
 			{ label: 'Terms', href: '/terms' },
+			{ label: 'Book a walkthrough', href: '/demo' },
 		],
 	},
 	storageKeys: {
@@ -247,6 +258,18 @@ export const siteConfig = {
 			author: 'Ifeoma Nwachukwu',
 			role: 'Stylist, Ikole-Ekiti',
 		},
+		{
+			quote:
+				'I stopped screenshotting WhatsApp threads. The chair request lands with the photo and the slot.',
+			author: 'Kunle Balogun',
+			role: 'Shop lead, Abuja',
+		},
+		{
+			quote:
+				'My clients in Lagos pick a look on their phone, then walk in already decided. Less mid-chair panic.',
+			author: 'Zainab Lawal',
+			role: 'Client, Ikeja',
+		},
 	],
 
 	pricingTiers: [
@@ -290,6 +313,18 @@ export const siteConfig = {
 			q: 'Do clients need an app store download?',
 			a: 'KTrail Style is web-first. Use it in the browser on phone or desktop — no app store download required.',
 		},
+		{
+			q: 'Where do booking photos go?',
+			a: 'Style-preview photos stay on the device for that session so the barber can discuss the look. We do not sell photos or use them to train public models. See /security for the full handling note.',
+		},
+		{
+			q: 'Can a shop list more than one barber?',
+			a: 'Yes. Shop and Studio plans are built for multiple chairs under one KTrail Style presence — hours, services, and requests in one place.',
+		},
+		{
+			q: 'How do I get help with an account?',
+			a: 'Email hello@ktrail.ai or open /help. For a guided look at the dashboard, book a walkthrough on /demo.',
+		},
 	],
 
 	team: [
@@ -306,6 +341,191 @@ export const siteConfig = {
 			linkedin: 'https://www.linkedin.com/in/babatunde-olaleye/',
 		},
 	],
+
+	solutionsPage: {
+		eyebrow: 'Solutions',
+		heading: ['ONE NETWORK,', 'THREE'],
+		headingAccent: 'Chairs',
+		body: 'KTrail Style is built for the people who cut, the shops that roster them, and the clients who sit down. Same product — different jobs.',
+		lanes: [
+			{
+				id: 'barbers',
+				kicker: '01 · Barbers',
+				title: 'Own the chair without living in WhatsApp',
+				body: 'Independent barbers list hours, services, and a face for the network. Clients find you, preview a cut, and send a chair request instead of a midnight “you free?” ping.',
+				points: [
+					'Public chair profile under the KTrail Style network',
+					'AI preview packs clients can discuss before they sit',
+					'WhatsApp-friendly handoff when you still want the chat',
+				],
+			},
+			{
+				id: 'shops',
+				kicker: '02 · Shops',
+				title: 'Many chairs, one front desk',
+				body: 'Salon owners stop running three calendars and a group chat. List every barber under one shop presence — naira pricing, shared hours, requests in one queue.',
+				points: [
+					'Multi-barber listing under one brand layer',
+					'Fill-rate view across chairs, not one inbox each',
+					'Studio walkthrough when you run more than one location',
+				],
+			},
+			{
+				id: 'clients',
+				kicker: '03 · Clients',
+				title: 'See the cut before you commit',
+				body: 'Upload a photo, try fades and color on your own face, then book the chair that can actually do the work. Less guesswork. Fewer mid-cut regrets.',
+				points: [
+					'Style preview on your photo — not a stranger’s lookbook',
+					'Pick a barber by city, specialty, and available slot',
+					'Web-first — no app store download to book',
+				],
+			},
+		],
+	},
+
+	customersPage: {
+		eyebrow: 'Customers',
+		heading: ['FROM THE', 'CHAIRS'],
+		headingAccent: 'Across cities',
+		body: 'Early shops and clients on the network — Ado-Ekiti, Lagos, Ikole, Abuja — talking about previews, bookings, and quieter WhatsApp threads.',
+	},
+
+	resourcesPage: {
+		eyebrow: 'Resources',
+		heading: ['READ,', 'THEN'],
+		headingAccent: 'Book',
+		body: 'Guides, answers, and how we handle bookings and photos. Start here if you are evaluating the product for a shop or a chair.',
+		hub: [
+			{
+				label: 'Features',
+				href: '/features',
+				blurb: 'What the platform carries — booking, previews, library, handoff.',
+			},
+			{
+				label: 'Blog',
+				href: '/blog',
+				blurb: 'Short notes on fades, color briefs, and chair calendars.',
+			},
+			{
+				label: 'Help',
+				href: '/help',
+				blurb: 'Straight answers on accounts, cities, and how booking works.',
+			},
+			{
+				label: 'Security',
+				href: '/security',
+				blurb: 'How chair requests and style photos are handled.',
+			},
+			{
+				label: 'Product',
+				href: '/product',
+				blurb: 'Demo, screenshots, and CAC registration for the legal entity.',
+			},
+			{
+				label: 'Team',
+				href: '/team',
+				blurb: 'The people shipping KTrail Style under K-TRAIL HAIRCUT SERVICES.',
+			},
+		],
+	},
+
+	featuresPage: {
+		eyebrow: 'Features',
+		heading: ['WHAT THE', 'PLATFORM'],
+		headingAccent: 'Carries',
+		body: 'Multi-barber booking and AI style previews in one product — built for Nigerian shops, priced in naira, handed off on WhatsApp when you still need the chat.',
+	},
+
+	helpPage: {
+		eyebrow: 'Help',
+		heading: ['STRAIGHT', 'ANSWERS'],
+		headingAccent: 'For shops',
+		body: 'Accounts, cities, photos, and how to reach us. If you want a guided look at the dashboard, book a walkthrough.',
+	},
+
+	blogPage: {
+		eyebrow: 'Blog',
+		heading: ['NOTES FROM', 'THE'],
+		headingAccent: 'Chair',
+		body: 'Short reads for barbers and clients — how to brief a fade, why color needs a preview, and why a shared calendar beats the group chat.',
+	},
+
+	blogPosts: [
+		{
+			slug: 'brief-the-fade',
+			title: 'Brief the fade so the chair gets it right',
+			date: '12 July 2026',
+			excerpt:
+				'A low skin fade is not a mood. It is a perimeter, a blend, and a maintenance promise. Write it down before you sit.',
+			paragraphs: [
+				'Most mid-chair arguments start the same way: the client says “just a fade” and the barber hears last week’s Instagram. Length on top, how high the blend climbs, and whether the neck is a skin fade or a taper — those three calls decide the cut.',
+				'On KTrail Style the client can attach a preview to the chair request. That pack is the brief. If you still take walk-ins, ask for the photo first. Point at the perimeter on their own face, not a stranger’s lookbook, and agree the week-two shape before the clippers come out.',
+				'Write the maintenance in the notes: humid weather, gym, how often they will be back. A fade that needs a weekly touch-up is a different product from a two-week taper. The chair should know which one they sold.',
+			],
+		},
+		{
+			slug: 'color-needs-a-preview',
+			title: 'Why clients hesitate on color — and why a preview helps',
+			date: '28 July 2026',
+			excerpt:
+				'Caramel on coils is a commitment. Showing it on their face is cheaper than a mid-session freeze.',
+			paragraphs: [
+				'Color is where Nigerian clients stall. Not because they do not want the look — because they cannot see it on their texture, their hairline, their light. A magazine crop on straight hair does not answer that.',
+				'A style preview on their own photo does not replace a strand test. It does replace the fifteen-minute “will this suit me?” loop at the basin. Face-frame highlights read differently on a heart-shaped face than a full-head lift. Show the perimeter first.',
+				'Barbers who send the preview pack with the booking request get fewer cancelled color slots. The client already chose the warmth. The chair can talk chemistry and timing instead of selling the idea from scratch.',
+			],
+		},
+		{
+			slug: 'calendar-beats-whatsapp',
+			title: 'A shared calendar beats the WhatsApp pile',
+			date: '4 August 2026',
+			excerpt:
+				'“You free Saturday?” is not a booking system. It is how chairs go empty at 2pm and double at 4.',
+			paragraphs: [
+				'Independent barbers in Ekiti and Lagos already run a business. They just run it in chat. The cost is invisible until Saturday: two clients at four, one no-show at noon, and a thread you cannot search.',
+				'KTrail Style does not ask you to abandon WhatsApp. It gives the shop a front desk the chat can point at. Hours, services, and a chair request with the preview attached. You confirm. The client stops asking if you are free.',
+				'Shops with more than one barber feel this first. Three inboxes is not a roster. One queue across chairs is. That is the difference between a brochure site and a network.',
+			],
+		},
+	],
+
+	securityPage: {
+		eyebrow: 'Security',
+		heading: ['BOOKINGS', 'AND'],
+		headingAccent: 'Photos',
+		body: 'How K-TRAIL HAIRCUT SERVICES handles chair requests and style-preview images when you use KTrail Style.',
+		intro:
+			'The product is web-first. Session details stay in the browser. Style previews and booking activity you generate in a demo session stay on the device. We do not sell personal information or listing photos to advertisers.',
+		columns: [
+			{
+				title: 'Chair requests',
+				body: 'A booking intent carries the service, slot, barber, and any preview the client attached. Shop accounts see that queue in the dashboard. We use the email you give at sign-in so you can open that shop again on this device.',
+			},
+			{
+				title: 'Style photos',
+				body: 'Photos uploaded for an AI preview are used to generate the recommendation pack for that session. They are not a public gallery. We do not sell face images or use them to train a public model.',
+			},
+		],
+		sections: [
+			{
+				title: 'What stays on the device',
+				body: 'Session keys, local booking activity, and preview results for this browser. Clearing site data signs you out and removes that local activity.',
+			},
+			{
+				title: 'What you send us',
+				body: 'Account email and password when you create an account or log in. Walkthrough forms may also collect name, phone, city, shop name, and a short note. Support mail to hello@ktrail.ai is read by the team at K-TRAIL HAIRCUT SERVICES.',
+			},
+			{
+				title: 'Who can see a preview',
+				body: 'The client who uploaded the photo, and the barber or shop that receives the chair request. Previews are not listed on a public explore feed.',
+			},
+			{
+				title: 'Questions',
+				body: 'Email hello@ktrail.ai. The legal entity is K-TRAIL HAIRCUT SERVICES, CAC 9200929, Ikole-Ekiti. The privacy policy on /privacy is the longer account of the same rules.',
+			},
+		],
+	},
 
 	demoResults: [
 		{

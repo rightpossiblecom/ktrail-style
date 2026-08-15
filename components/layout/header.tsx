@@ -45,12 +45,12 @@ export function Header() {
 							</span>
 						</Link>
 
-						<nav className="hidden items-center gap-10 md:flex">
+						<nav className="hidden items-center gap-5 lg:flex xl:gap-8">
 							{navLinks.map((link) => (
 								<Link
 									key={link.href}
 									href={link.href}
-									className="link-underline text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-cream)]"
+									className="link-underline text-[0.65rem] font-medium uppercase tracking-[0.18em] text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-cream)] xl:text-[0.7rem] xl:tracking-[0.22em]"
 								>
 									{link.label}
 								</Link>
@@ -58,7 +58,7 @@ export function Header() {
 						</nav>
 
 						<div className="flex items-center gap-4">
-							<div className="hidden items-center gap-5 md:flex">
+							<div className="hidden items-center gap-5 lg:flex">
 								<Link
 									href={siteConfig.hero.secondaryCta.href}
 									className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-cream)]"
@@ -75,7 +75,7 @@ export function Header() {
 
 							<button
 								onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-								className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+								className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
 								aria-label="Toggle menu"
 							>
 								<motion.span
@@ -125,7 +125,7 @@ export function Header() {
 							<motion.div
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
-								transition={{ delay: 0.6 }}
+								transition={{ delay: navLinks.length * 0.08 + 0.2 }}
 								className="mt-4 flex flex-col items-center gap-4"
 							>
 								<Link
