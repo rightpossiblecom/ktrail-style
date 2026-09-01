@@ -4,6 +4,7 @@ import { createEmptyWorkspace, createSampleWorkspace } from "./fixture";
 import {
 	WORKSPACE_STORAGE_KEY,
 	loadWorkspace,
+	persistWorkspaceUpdate,
 	resetWorkspace,
 	saveWorkspace,
 	type StorageLike,
@@ -68,6 +69,51 @@ describe("workspace storage", () => {
 		);
 
 		expect(loadWorkspace(storage)).toEqual(createEmptyWorkspace());
+	});
+
+	it.each([
+		["a non-array collection", { ...createSampleWorkspace(), requests: {} }],
+		[
+			"an invalid nested field",
+			{
+				...createSampleWorkspace(),
+				requests: [
+					{
+						...createSampleWorkspace().requests[0],
+						price: "8500",
+					},
+				],
+			},
+		],
+	])("removes a version-1 workspace with %s", (_, workspace) => {
+		const storage = new MemoryStorage();
+		storage.setItem(
+			WORKSPACE_STORAGE_KEY,
+			JSON.stringify({ version: 1, workspace }),
+		);
+
+		expect(loadWorkspace(storage)).toEqual(createEmptyWorkspace());
+		expect(storage.getItem(WORKSPACE_STORAGE_KEY)).toBeNull();
+	});
+
+	it("derives and persists sequential commands from the latest state", () => {
+		const storage = new MemoryStorage();
+		const addRevenue =
+			(amount: number) =>
+			(workspace: ReturnType<typeof createEmptyWorkspace>) => ({
+				...workspace,
+				baseProjectedRevenue: workspace.baseProjectedRevenue + amount,
+			});
+
+		const first = persistWorkspaceUpdate(
+			storage,
+			createEmptyWorkspace(),
+			addRevenue(100),
+		);
+		const second = persistWorkspaceUpdate(storage, first, addRevenue(200));
+
+		expect(second.baseProjectedRevenue).toBe(300);
+		expect(loadWorkspace(storage)).toEqual(second);
 	});
 
 	it("removes persisted state and returns an empty workspace on reset", () => {

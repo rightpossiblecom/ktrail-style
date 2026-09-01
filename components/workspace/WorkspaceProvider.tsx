@@ -17,8 +17,8 @@ import {
 } from "@/lib/workspace/operations";
 import {
 	loadWorkspace,
+	persistWorkspaceUpdate,
 	resetWorkspace as resetStoredWorkspace,
-	saveWorkspace,
 } from "@/lib/workspace/storage";
 import type {
 	KTrailWorkspace,
@@ -47,24 +47,28 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
 		setHydrated(true);
 	}, []);
 
-	const persistWorkspace = useCallback((nextWorkspace: KTrailWorkspace) => {
-		saveWorkspace(window.localStorage, nextWorkspace);
-		setWorkspace(nextWorkspace);
-	}, []);
+	const persistWorkspace = useCallback(
+		(update: (current: KTrailWorkspace) => KTrailWorkspace) => {
+			setWorkspace((current) =>
+				persistWorkspaceUpdate(window.localStorage, current, update),
+			);
+		},
+		[],
+	);
 
 	const loadSample = useCallback(() => {
-		persistWorkspace(createSampleWorkspace());
+		persistWorkspace(() => createSampleWorkspace());
 	}, [persistWorkspace]);
 
 	const approveClientRequest = useCallback(
 		(requestId: string) => {
-			persistWorkspace(approveRequest(workspace, requestId));
+			persistWorkspace((current) => approveRequest(current, requestId));
 		},
-		[persistWorkspace, workspace],
+		[persistWorkspace],
 	);
 
 	const resetWorkspace = useCallback(() => {
-		setWorkspace(resetStoredWorkspace(window.localStorage));
+		setWorkspace(() => resetStoredWorkspace(window.localStorage));
 	}, []);
 
 	const value = useMemo<WorkspaceContextValue>(

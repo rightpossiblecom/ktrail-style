@@ -33,3 +33,14 @@
 ## Concerns
 
 - None.
+
+## Correctness fix evidence
+
+- RED: `pnpm test lib/workspace/storage.test.ts` — 2 malformed version-1 payload tests failed because invalid workspaces were returned unchanged.
+- RED: `pnpm test lib/workspace/storage.test.ts` — the sequential command regression also failed because `persistWorkspaceUpdate` did not exist.
+- FIX: storage now validates every workspace collection and every nested field used by the domain before returning persisted state, removing invalid payloads.
+- FIX: provider commands now use functional state updates, and `persistWorkspaceUpdate` saves the exact next state derived from the latest state.
+- GREEN: `pnpm test lib/workspace/storage.test.ts` — 1 file passed, 8 tests passed.
+- GREEN: `pnpm test` — 2 files passed, 14 tests passed.
+- GREEN: `pnpm exec tsc --noEmit` — passed with no errors.
+- Fix concerns: None.
