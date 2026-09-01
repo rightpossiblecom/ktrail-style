@@ -1,133 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
-	/* Muted dark green + warm copper — Frisor v2 */
-	--color-bg: #2C3633;
-	--color-bg-deep: #1F2725;
-	--color-surface: #384341;
-	--color-surface-2: #4A5755;
-	--color-surface-3: #5D6B68;
-	--color-cream: #EFE7D6;
-	--color-cream-muted: #A8A294;
-	--color-cream-dim: #76716A;
-
-	/* Warm copper accent (replaces gold) */
-	--color-copper: #BE8342;
-	--color-copper-bright: #D69A55;
-	--color-copper-dark: #8E5F2E;
-
-	/* Backwards-compat aliases so existing var(--color-gold) usages keep working */
-	--color-gold: var(--color-copper);
-	--color-gold-bright: var(--color-copper-bright);
-	--color-gold-dark: var(--color-copper-dark);
-
-	--color-line: rgba(239, 231, 214, 0.10);
-	--color-line-strong: rgba(239, 231, 214, 0.20);
-
-	/* Typography */
-	--font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
-	--font-body: 'Inter', system-ui, sans-serif;
-
-	/* Animations */
-	--animate-fade-up: fade-up 0.8s ease both;
-	--animate-fade-in: fade-in 0.8s ease both;
-	--animate-marquee: marquee 25s linear infinite;
-	--animate-pulse-copper: pulse-copper 1.6s ease-in-out infinite;
-
-	/* Spacing */
-	--spacing-section: 8rem;
-	--spacing-section-sm: 5rem;
+	--color-bg: #f6f4ef;
+	--color-bg-deep: #ffffff;
+	--color-surface: #eeebe4;
+	--color-surface-2: #e4e0d6;
+	--color-surface-3: #d4cfc3;
+	--color-ink: #111318;
+	--color-cream: #111318;
+	--color-cream-muted: #5c6370;
+	--color-cream-dim: #7a8190;
+	--color-cobalt: #2458ff;
+	--color-cobalt-bright: #4c78ff;
+	--color-copper: #2458ff;
+	--color-copper-bright: #4c78ff;
+	--color-copper-dark: #1639b8;
+	--color-gold: #2458ff;
+	--color-gold-bright: #4c78ff;
+	--color-gold-dark: #1639b8;
+	--color-success: #1f8a5b;
+	--color-line: rgba(17, 19, 24, 0.08);
+	--color-line-strong: rgba(17, 19, 24, 0.16);
+	--font-display: var(--font-manrope), 'Manrope', system-ui, sans-serif;
+	--font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--animate-fade-up: fade-up 0.22s var(--ease-out) both;
+	--animate-fade-in: fade-in 0.22s var(--ease-out) both;
+	--spacing-section: 6rem;
+	--spacing-section-sm: 4rem;
 }
 
-/* Base styles */
 html {
-	scroll-behavior: smooth;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
 	font-family: var(--font-body);
-	color: var(--color-cream);
+	color: var(--color-ink);
 	background-color: var(--color-bg);
 }
 
-/* Selection */
 ::selection {
-	background-color: var(--color-copper);
-	color: var(--color-bg-deep);
+	background-color: var(--color-cobalt);
+	color: #fff;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-	width: 10px;
-	height: 10px;
-}
-
-::-webkit-scrollbar-track {
-	background: var(--color-bg-deep);
-}
-
-::-webkit-scrollbar-thumb {
-	background: var(--color-surface-2);
-	border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background: var(--color-surface-3);
-}
-
-/* Hide scrollbar for horizontal strips */
-.no-scrollbar::-webkit-scrollbar {
-	display: none;
-}
-.no-scrollbar {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-/* Display heading utility */
 .heading-display {
 	font-family: var(--font-display);
-	font-weight: 600;
-	line-height: 0.95;
-	letter-spacing: -0.02em;
+	font-weight: 650;
+	line-height: 1.05;
+	letter-spacing: -0.035em;
 }
 
 .heading-display-italic {
 	font-family: var(--font-display);
-	font-style: italic;
-	font-weight: 500;
-	line-height: 0.95;
-	letter-spacing: -0.01em;
+	font-style: normal;
+	font-weight: 650;
+	color: var(--color-cobalt);
 }
 
-/* Image placeholder gradient (dark-theme).
- * Uses background-image (not the `background:` shorthand) so combining this class
- * with Tailwind's `bg-cover` / `bg-center` doesn't get its size/position reset. */
-.image-placeholder {
-	background-image:
-		linear-gradient(135deg, rgba(190, 131, 66, 0.06) 0%, rgba(0, 0, 0, 0) 50%),
-		linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
+.kicker {
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-cobalt);
 }
 
-/* Horizontal rule accent */
-.hr-accent {
-	height: 2px;
-	background-color: var(--color-copper);
-	border: none;
+.card {
+	background: var(--color-bg-deep);
+	border: 1px solid var(--color-line);
+	border-radius: 18px;
+	box-shadow: 0 12px 40px rgba(17, 19, 24, 0.04);
 }
 
-/* Dotted leader line (img_1 style "service ........ $price") */
-.leader-line {
-	flex: 1;
-	margin: 0 1rem;
-	border-bottom: 1px dotted var(--color-line-strong);
-	transform: translateY(-4px);
+.btn-primary,
+.btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: 999px;
+	padding: 0.85rem 1.25rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	transition: transform 140ms var(--ease-out), background-color 160ms var(--ease-out),
+		color 160ms var(--ease-out), border-color 160ms var(--ease-out);
 }
 
-/* Link hover animation */
+.btn-primary {
+	background: var(--color-cobalt);
+	color: #fff;
+}
+
+.btn-secondary {
+	background: transparent;
+	border: 1px solid var(--color-line-strong);
+	color: var(--color-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.btn-primary:hover {
+		background: var(--color-cobalt-bright);
+	}
+	.btn-secondary:hover {
+		border-color: var(--color-ink);
+	}
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+button:active,
+a.btn-primary:active,
+a.btn-secondary:active {
+	transform: scale(0.97);
+}
+
 .link-underline {
 	position: relative;
 	display: inline-block;
@@ -141,39 +130,54 @@ body {
 	width: 0;
 	height: 1.5px;
 	background-color: currentColor;
-	transition: width 0.3s ease;
+	transition: width 180ms var(--ease-out);
 }
 
-.link-underline:hover::after {
-	width: 100%;
+@media (hover: hover) and (pointer: fine) {
+	.link-underline:hover::after {
+		width: 100%;
+	}
 }
 
-/* Noise texture overlay for dark sections */
+.image-placeholder {
+	background-image: linear-gradient(135deg, #e8edff 0%, #f6f4ef 100%);
+}
+
+.hr-accent {
+	height: 2px;
+	background-color: var(--color-cobalt);
+	border: none;
+}
+
+.leader-line {
+	flex: 1;
+	margin: 0 1rem;
+	border-bottom: 1px dotted var(--color-line-strong);
+	transform: translateY(-4px);
+}
+
 .noise-overlay {
 	position: relative;
 }
 
-.noise-overlay::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	opacity: 0.04;
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-	pointer-events: none;
-	z-index: 1;
-}
-
-/* Vertical writing for "BOOK NOW" rail */
 .writing-vertical {
 	writing-mode: vertical-rl;
 	transform: rotate(180deg);
 }
 
-/* Keyframes */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
 @keyframes fade-up {
 	from {
 		opacity: 0;
-		transform: translateY(30px);
+		transform: translateY(8px);
 	}
 	to {
 		opacity: 1;
@@ -190,30 +194,13 @@ body {
 	}
 }
 
-@keyframes marquee {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(-50%);
-	}
-}
-
-@keyframes pulse-copper {
-	0%, 100% {
-		box-shadow: 0 0 0 0 rgba(190, 131, 66, 0.45);
-	}
-	50% {
-		box-shadow: 0 0 0 8px rgba(190, 131, 66, 0);
-	}
-}
-
-/* Backwards-compat alias for the renamed animation token */
-@keyframes pulse-gold {
-	0%, 100% {
-		box-shadow: 0 0 0 0 rgba(190, 131, 66, 0.45);
-	}
-	50% {
-		box-shadow: 0 0 0 8px rgba(190, 131, 66, 0);
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 }

@@ -1,249 +1,166 @@
 'use client';
 
-import { useCallback, useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { PipelineOverlay } from '@/components/demo/PipelineOverlay';
-import { demoFlow } from '@/config/demo-flow';
-import { siteConfig } from '@/config/site';
-import { saveAssessment } from '@/lib/assessments';
-import type { StylePreviewResult } from '@/lib/analyze/types';
+import { useWorkspace } from '@/components/workspace/WorkspaceProvider';
+
+const ANALYSIS_MS = 90_000;
+const STAGES = [
+	'Reading the WhatsApp request',
+	'Identifying the service',
+	'Matching the best barber',
+	'Finding an open chair',
+	'Preparing price and deposit',
+];
 
 const fieldClass =
-	'mt-2 w-full border border-[var(--color-line-strong)] bg-[var(--color-bg-deep)] px-4 py-3 text-sm text-[var(--color-cream)] outline-none placeholder:text-[var(--color-cream-dim)] focus:border-[var(--color-copper)]';
+	'mt-2 w-full rounded-xl border border-[var(--color-line-strong)] bg-[var(--color-bg-deep)] px-4 py-3 text-sm outline-none focus:border-[var(--color-cobalt)]';
 
-const labelClass = 'block text-[0.65rem] font-medium uppercase tracking-[0.22em] text-[var(--color-cream-dim)]';
-
-type Mode = 'upload' | 'manual';
-
-export default function NewPreviewPage() {
+export default function InboxPage() {
 	const router = useRouter();
-	const [mode, setMode] = useState<Mode>('upload');
+	const { loadSample } = useWorkspace();
+	const [clientName, setClientName] = useState('');
+	const [requestText, setRequestText] = useState('');
+	const [fileName, setFileName] = useState('');
 	const [error, setError] = useState('');
-	const [busy, setBusy] = useState(false);
-	const [overlayOpen, setOverlayOpen] = useState(false);
-	const [pendingFileName, setPendingFileName] = useState('');
-	const [uploadClientName, setUploadClientName] = useState('Walk-in client');
-	const [uploadCity, setUploadCity] = useState('Ado-Ekiti');
+	const [analyzing, setAnalyzing] = useState(false);
+	const [remaining, setRemaining] = useState(ANALYSIS_MS);
+	const [notify, setNotify] = useState(false);
+	const [notifyArmed, setNotifyArmed] = useState(false);
 
-	const finishUpload = useCallback(() => {
-		const seed = siteConfig.demoResults[0];
-		if (!seed) {
-			setError('No demo seed available.');
-			setOverlayOpen(false);
-			setBusy(false);
-			return;
-		}
-		const id = `preview_upload_${Date.now()}`;
-		const result: StylePreviewResult = {
-			...seed,
-			id,
-			createdAt: new Date().toISOString(),
-			clientName: uploadClientName.trim() || 'Walk-in client',
-			city: uploadCity.trim() || 'Ado-Ekiti',
-			previewNotes: pendingFileName
-				? `Choreographed demo from photo "${pendingFileName}". ${seed.previewNotes}`
-				: seed.previewNotes,
-		};
-		saveAssessment(result);
-		setOverlayOpen(false);
-		setBusy(false);
-		router.push(`/projects/${id}`);
-	}, [pendingFileName, router, uploadCity, uploadClientName]);
+	useEffect(() => {
+		if (!analyzing) return undefined;
+		const started = Date.now();
+		const timer = window.setInterval(() => {
+			const left = Math.max(0, ANALYSIS_MS - (Date.now() - started));
+			setRemaining(left);
+			if (left === 0) {
+				window.clearInterval(timer);
+				loadSample();
+				router.push('/projects/req_tunde_wedding');
+			}
+		}, 250);
+		return () => window.clearInterval(timer);
+	}, [analyzing, loadSample, router]);
 
-	function onUploadSubmit(e: FormEvent<HTMLFormElement>) {
-		e.preventDefault();
+	function fillSample() {
+		setClientName('Tunde Adebayo');
+		setRequestText('Low taper before a wedding. Thursday afternoon if Chinedu is free.');
+		setFileName('whatsapp-tunde-wedding.png');
 		setError('');
-		const fd = new FormData(e.currentTarget);
-		const file = fd.get('photo') as File | null;
-		if (!file || !file.size) {
-			setError('Choose a client photo to continue.');
-			return;
-		}
-		setPendingFileName(file.name);
-		setUploadClientName(String(fd.get('clientName') || 'Walk-in client').trim());
-		setUploadCity(String(fd.get('city') || 'Ado-Ekiti').trim());
-		setBusy(true);
-		if (demoFlow.hardcodeVisionDemo) {
-			setOverlayOpen(true);
-		} else {
-			finishUpload();
-		}
 	}
 
-	async function onManualSubmit(e: FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-		setError('');
-		setBusy(true);
-		const fd = new FormData(e.currentTarget);
-		const body = {
-			clientName: String(fd.get('clientName') || '').trim(),
-			city: String(fd.get('city') || '').trim(),
-			faceShape: String(fd.get('faceShape') || 'unknown'),
-			hairTexture: String(fd.get('hairTexture') || 'unknown'),
-			requestedStyle: String(fd.get('requestedStyle') || '').trim(),
-		};
-		if (!body.clientName || !body.city || !body.requestedStyle) {
-			setError('Name, city, and requested style are required.');
-			setBusy(false);
+	function onSubmit(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		if (!clientName.trim() || (!requestText.trim() && !fileName)) {
+			setError('Add the client and a WhatsApp screenshot, selfie, or typed request.');
 			return;
 		}
-		try {
-			const res = await fetch('/api/analyze', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			});
-			if (!res.ok) {
-				throw new Error('Analyze failed');
-			}
-			const result = (await res.json()) as StylePreviewResult;
-			saveAssessment(result);
-			router.push(`/projects/${result.id}`);
-		} catch {
-			setError('Could not build preview. Try again.');
-			setBusy(false);
-		}
+		setAnalyzing(true);
+		setRemaining(ANALYSIS_MS);
+	}
+
+	const stageIndex = Math.min(
+		STAGES.length - 1,
+		Math.floor(((ANALYSIS_MS - remaining) / ANALYSIS_MS) * STAGES.length),
+	);
+
+	if (analyzing) {
+		return (
+			<div className="mx-auto max-w-lg space-y-6">
+				<p className="kicker">Smart Inbox</p>
+				<h1 className="heading-display text-3xl">Building the booking pack</h1>
+				<p className="text-sm text-[var(--color-cream-muted)]">
+					{Math.ceil(remaining / 1000)} seconds remaining. Leave if you want — we will write when it is done.
+				</p>
+				<ul className="card divide-y divide-[var(--color-line)]">
+					{STAGES.map((stage, index) => (
+						<li key={stage} className="flex items-center justify-between px-5 py-4 text-sm">
+							<span>{stage}</span>
+							<span className="text-xs font-semibold text-[var(--color-success)]">
+								{index < stageIndex ? 'Done' : index === stageIndex ? 'Running' : 'Queued'}
+							</span>
+						</li>
+					))}
+				</ul>
+				<label className="flex items-center gap-3 text-sm">
+					<input
+						type="checkbox"
+						checked={notify}
+						onChange={(event) => {
+							setNotify(event.target.checked);
+							if (event.target.checked) setNotifyArmed(true);
+						}}
+					/>
+					Notify me when it is done
+				</label>
+				{notifyArmed && (
+					<p className="text-sm text-[var(--color-success)]">
+						Pending note set. Command will get a done note when the pack is ready.
+					</p>
+				)}
+			</div>
+		);
 	}
 
 	return (
-		<>
-			<div className="mx-auto max-w-lg space-y-8">
-				<div>
-					<p className="text-[0.65rem] uppercase tracking-[0.28em] text-[var(--color-copper)]">
-						New preview
-					</p>
-					<h1 className="heading-display mt-2 text-3xl">Style preview intake</h1>
-					<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
-						Upload a photo for the choreographed demo path, or enter a manual brief for analyze.
-					</p>
-				</div>
-
-				<div className="flex gap-2 border-b border-[var(--color-line)] pb-3">
-					{(['upload', 'manual'] as const).map((m) => (
-						<button
-							key={m}
-							type="button"
-							onClick={() => {
-								setMode(m);
-								setError('');
-							}}
-							className={`rounded-full px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] ${
-								mode === m
-									? 'bg-[var(--color-copper)] text-[var(--color-bg-deep)]'
-									: 'text-[var(--color-cream-muted)] hover:text-[var(--color-cream)]'
-							}`}
-						>
-							{m}
-						</button>
-					))}
-				</div>
-
-				{mode === 'upload' ? (
-					<form onSubmit={onUploadSubmit} className="space-y-5">
-						<div>
-							<label className={labelClass} htmlFor="photo">
-								Client photo
-							</label>
-							<input
-								id="photo"
-								name="photo"
-								type="file"
-								accept="image/*"
-								required
-								className={`${fieldClass} file:mr-4 file:border-0 file:bg-[var(--color-copper)] file:px-3 file:py-1 file:text-[0.65rem] file:font-semibold file:uppercase file:tracking-[0.14em] file:text-[var(--color-bg-deep)]`}
-							/>
-						</div>
-						<div>
-							<label className={labelClass} htmlFor="clientName">
-								Client name
-							</label>
-							<input
-								id="clientName"
-								name="clientName"
-								defaultValue="Walk-in client"
-								className={fieldClass}
-							/>
-						</div>
-						<div>
-							<label className={labelClass} htmlFor="city">
-								City
-							</label>
-							<input id="city" name="city" defaultValue="Ado-Ekiti" className={fieldClass} />
-						</div>
-						{error && <p className="text-sm text-[var(--color-copper-bright)]">{error}</p>}
-						<button
-							type="submit"
-							disabled={busy}
-							className="w-full rounded-full bg-[var(--color-copper)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg-deep)] disabled:opacity-60"
-						>
-							{busy ? 'Running pipeline…' : 'Run photo preview'}
-						</button>
-					</form>
-				) : (
-					<form onSubmit={onManualSubmit} className="space-y-5">
-						<div>
-							<label className={labelClass} htmlFor="m-clientName">
-								Client name
-							</label>
-							<input id="m-clientName" name="clientName" required className={fieldClass} />
-						</div>
-						<div>
-							<label className={labelClass} htmlFor="m-city">
-								City
-							</label>
-							<input id="m-city" name="city" required className={fieldClass} placeholder="Lagos" />
-						</div>
-						<div>
-							<label className={labelClass} htmlFor="faceShape">
-								Face shape
-							</label>
-							<select id="faceShape" name="faceShape" className={fieldClass} defaultValue="unknown">
-								<option value="unknown">Unknown</option>
-								<option value="oval">Oval</option>
-								<option value="round">Round</option>
-								<option value="square">Square</option>
-								<option value="heart">Heart</option>
-								<option value="long">Long</option>
-								<option value="diamond">Diamond</option>
-							</select>
-						</div>
-						<div>
-							<label className={labelClass} htmlFor="hairTexture">
-								Hair texture
-							</label>
-							<select id="hairTexture" name="hairTexture" className={fieldClass} defaultValue="unknown">
-								<option value="unknown">Unknown</option>
-								<option value="straight">Straight</option>
-								<option value="wavy">Wavy</option>
-								<option value="curly">Curly</option>
-								<option value="coily">Coily</option>
-							</select>
-						</div>
-						<div>
-							<label className={labelClass} htmlFor="requestedStyle">
-								Requested style
-							</label>
-							<input
-								id="requestedStyle"
-								name="requestedStyle"
-								required
-								className={fieldClass}
-								placeholder="Low skin fade"
-							/>
-						</div>
-						{error && <p className="text-sm text-[var(--color-copper-bright)]">{error}</p>}
-						<button
-							type="submit"
-							disabled={busy}
-							className="w-full rounded-full bg-[var(--color-copper)] px-8 py-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg-deep)] disabled:opacity-60"
-						>
-							{busy ? 'Analyzing…' : 'Build preview'}
-						</button>
-					</form>
-				)}
+		<div className="mx-auto max-w-lg space-y-8">
+			<div>
+				<p className="kicker">Smart Inbox</p>
+				<h1 className="heading-display mt-2 text-3xl">New client request</h1>
+				<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
+					Upload a WhatsApp screenshot or selfie, or type the request. Use the Fade District sample for the recording.
+				</p>
 			</div>
-
-			<PipelineOverlay open={overlayOpen} onComplete={finishUpload} />
-		</>
+			<form onSubmit={onSubmit} className="space-y-5">
+				<div>
+					<label className="text-xs font-semibold uppercase tracking-[0.08em]" htmlFor="clientName">
+						Client
+					</label>
+					<input
+						id="clientName"
+						value={clientName}
+						onChange={(event) => setClientName(event.target.value)}
+						className={fieldClass}
+						placeholder="Tunde Adebayo"
+					/>
+				</div>
+				<div>
+					<label className="text-xs font-semibold uppercase tracking-[0.08em]" htmlFor="artifact">
+						WhatsApp screenshot or selfie
+					</label>
+					<input
+						id="artifact"
+						type="file"
+						accept="image/*"
+						onChange={(event) => setFileName(event.target.files?.[0]?.name ?? '')}
+						className={`${fieldClass} file:mr-4 file:border-0 file:bg-[var(--color-cobalt)] file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white`}
+					/>
+					{fileName && <p className="mt-2 text-xs text-[var(--color-cream-dim)]">{fileName}</p>}
+				</div>
+				<div>
+					<label className="text-xs font-semibold uppercase tracking-[0.08em]" htmlFor="requestText">
+						Typed request
+					</label>
+					<textarea
+						id="requestText"
+						rows={4}
+						value={requestText}
+						onChange={(event) => setRequestText(event.target.value)}
+						className={fieldClass}
+						placeholder="Low taper before a wedding…"
+					/>
+				</div>
+				{error && <p className="text-sm text-[var(--color-cobalt)]">{error}</p>}
+				<div className="flex flex-wrap gap-3">
+					<button type="button" onClick={fillSample} className="btn-secondary">
+						Use Fade District sample
+					</button>
+					<button type="submit" className="btn-primary">
+						Run analysis
+					</button>
+				</div>
+			</form>
+		</div>
 	);
 }

@@ -72,10 +72,12 @@ export default function ProductPage() {
 				</div>
 			</section>
 
-			<section className="border-y border-[var(--color-line)] bg-[var(--color-bg-deep)] py-16">
+			<section className="border-t border-[var(--color-line)] py-16">
 				<div className="mx-auto max-w-[1500px] px-6 lg:px-10">
-					<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-copper)]">
-						Registration / CAC
+					<p className="kicker">Legal entity</p>
+					<p className="mt-3 max-w-2xl text-sm text-[var(--color-cream-muted)]">
+						The product is KTrail OS. The registered operator is listed below for compliance, not as the
+						homepage story.
 					</p>
 					<div className="mt-6 grid gap-8 lg:grid-cols-2">
 						<div className="relative aspect-[3/4] max-w-md overflow-hidden border border-[var(--color-line)] bg-[var(--color-bg)]">

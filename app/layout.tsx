@@ -1,8 +1,21 @@
 import type { Metadata } from 'next';
+import { Inter, Manrope } from 'next/font/google';
 import { AppShell } from '@/components/layout/AppShell';
 import { Providers } from '@/components/providers';
 import { siteConfig } from '@/config/site';
 import './globals.css';
+
+const inter = Inter({
+	subsets: ['latin'],
+	variable: '--font-inter',
+	display: 'swap',
+});
+
+const manrope = Manrope({
+	subsets: ['latin'],
+	variable: '--font-manrope',
+	display: 'swap',
+});
 
 const title = `${siteConfig.brandName} — ${siteConfig.tagline}`;
 
@@ -12,7 +25,10 @@ export const metadata: Metadata = {
 		template: `%s | ${siteConfig.brandName}`,
 	},
 	description: siteConfig.description,
-	metadataBase: new URL(siteConfig.url),
+	robots: {
+		index: true,
+		follow: true,
+	},
 	openGraph: {
 		title,
 		description: siteConfig.description,
@@ -25,10 +41,6 @@ export const metadata: Metadata = {
 		title,
 		description: siteConfig.description,
 	},
-	robots: {
-		index: true,
-		follow: true,
-	},
 };
 
 export default function RootLayout({
@@ -37,7 +49,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" className={`${inter.variable} ${manrope.variable}`}>
 			<body>
 				<script
 					dangerouslySetInnerHTML={{

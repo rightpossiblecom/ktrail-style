@@ -30,7 +30,7 @@ export function Header() {
 	return (
 		<>
 			<header
-				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+				className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color] duration-200 ${
 					isScrolled
 						? 'bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-line)]'
 						: 'bg-transparent'
@@ -39,9 +39,9 @@ export function Header() {
 				<div className="mx-auto max-w-[1400px] px-6 lg:px-10">
 					<div className="flex h-20 items-center justify-between">
 						<Link href="/" className="relative z-10">
-							<span className="font-display text-2xl font-semibold tracking-tight text-[var(--color-cream)]">
+							<span className="heading-display text-2xl">
 								{siteConfig.logo.text}
-								<span className="text-[var(--color-gold)]">{siteConfig.logo.accent}</span>
+								<span className="text-[var(--color-cobalt)]">{siteConfig.logo.accent}</span>
 							</span>
 						</Link>
 
@@ -50,7 +50,7 @@ export function Header() {
 								<Link
 									key={link.href}
 									href={link.href}
-									className="link-underline text-[0.65rem] font-medium uppercase tracking-[0.18em] text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-cream)] xl:text-[0.7rem] xl:tracking-[0.22em]"
+									className="text-sm font-medium text-[var(--color-cream-muted)] hover:text-[var(--color-ink)]"
 								>
 									{link.label}
 								</Link>
@@ -61,13 +61,13 @@ export function Header() {
 							<div className="hidden items-center gap-5 lg:flex">
 								<Link
 									href={siteConfig.hero.secondaryCta.href}
-									className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-cream)]"
+									className="text-sm font-medium text-[var(--color-cream-muted)]"
 								>
 									{siteConfig.hero.secondaryCta.label}
 								</Link>
 								<Link
 									href={siteConfig.hero.cta.href}
-									className="rounded-full bg-[var(--color-gold)] px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-bg)] transition-all hover:bg-[var(--color-gold-bright)]"
+									className="btn-primary px-5 py-2.5 text-sm"
 								>
 									{siteConfig.hero.cta.label}
 								</Link>

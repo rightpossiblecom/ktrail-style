@@ -1,5 +1,5 @@
 import { DashboardShell } from '@/components/dashboard/DashboardShell';
 
-export default function ServicesLayout({ children }: { children: React.ReactNode }) {
+export default function ClientsLayout({ children }: { children: React.ReactNode }) {
 	return <DashboardShell>{children}</DashboardShell>;
 }

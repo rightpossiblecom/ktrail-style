@@ -14,6 +14,9 @@ const APP_PREFIXES = [
 	'/barbers',
 	'/bookings',
 	'/style-library',
+	'/clients',
+	'/insights',
+	'/services',
 ];
 
 function isAppRoute(pathname: string) {

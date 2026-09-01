@@ -7,8 +7,18 @@ import type {
 	WorkspaceMetrics,
 } from "./types";
 
-function formatNaira(amount: number): string {
+export function formatNaira(amount: number): string {
 	return `₦${amount.toLocaleString("en-US")}`;
+}
+
+export const DEMO_WHATSAPP_NUMBER = "2348015550180";
+
+export function composeWhatsAppUrl(
+	workspace: KTrailWorkspace,
+	requestId: string,
+): string {
+	const message = composeWhatsAppMessage(workspace, requestId);
+	return `https://wa.me/${DEMO_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 function findRequest(

@@ -1,0 +1,23 @@
+KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients.
+
+Product: KTrail OS
+Operator: K-TRAIL HAIRCUT SERVICES
+
+Paths
+/ product landing
+/product
+/team
+/pricing
+/about
+/login
+/signup
+/dashboard Command
+/new Smart Inbox
+/bookings Calendar
+/clients
+/barbers Team
+/services
+/insights
+/style-library Preview Studio
+/privacy
+/terms

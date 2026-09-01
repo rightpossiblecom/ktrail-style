@@ -14,56 +14,55 @@ export const siteConfig = {
 	natureOfBusiness: 'Beauty and salon services',
 	address: 'No 19, Secretariat Near NNPC, Ikole-Ekiti, Ekiti State, Nigeria',
 	foundedYear: 2026,
-	brandName: 'KTrail Style',
-	shortName: 'KTS',
+	brandName: 'KTrail',
+	shortName: 'KTrail OS',
 	domain: 'ktrail.ai',
 	url: 'https://ktrail.ai',
 	supportEmail: 'hello@ktrail.ai',
-	tagline: 'Book the chair. Preview the cut.',
+	tagline: 'Turn WhatsApp requests into booked, paid chairs.',
 	description:
-		'Multi-barber booking and AI hairstyle previews for Nigerian barbers and their clients. Operated by K-TRAIL HAIRCUT SERVICES.',
+		'KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients. Operated by K-TRAIL HAIRCUT SERVICES.',
 	oneLiner:
-		'KTrail Style gives Nigerian barbers a shared booking home and AI hair previews so clients book the right cut with confidence.',
+		'KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients.',
 	mission:
-		'Help independent Nigerian barbers look professional online, fill chairs with clearer appointments, and let clients try styles before they sit down.',
-	logo: { text: 'KTrail', accent: ' Style' },
+		'Give multi-chair Nigerian shops one desk for intake, calendars, deposits, staff, and returning clients — so the next generation inherits a business, not a chat pile.',
+	logo: { text: 'KTrail', accent: ' OS' },
 	nav: [
 		{ href: '/product', label: 'Product' },
-		{ href: '/how-it-works', label: 'How it works' },
-		{ href: '/lookbook', label: 'Lookbook' },
+		{ href: '/dashboard', label: 'Command' },
+		{ href: '/new', label: 'Inbox' },
+		{ href: '/bookings', label: 'Calendar' },
 		{ href: '/pricing', label: 'Pricing' },
-		{ href: '/journal', label: 'Journal' },
-		{ href: '/studio', label: 'Studio' },
 		{ href: '/team', label: 'Team' },
 	],
 	hero: {
-		subtitle: 'KTrail Style',
-		heading: ['BOOK THE', 'CHAIR.'],
-		headingAccent: 'Preview',
-		body: 'A multi-barber home for Nigerian shops — AI style previews for clients, clearer bookings for the chair.',
+		subtitle: 'KTrail OS',
+		heading: ['Turn WhatsApp', 'into paid'],
+		headingAccent: 'chairs',
+		body: 'KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients. Built first for 3–10 chair shops in Lagos.',
 		cta: { label: 'Log in', href: '/login' },
 		secondaryCta: { label: 'Create account', href: '/signup' },
-		metaLeft: 'Ekiti · Nigeria',
-		metaCenter: 'Multi-barber · AI preview',
-		imageCaption: 'Network · chairs across cities',
-		backgroundText: 'KTRAIL · KTRAIL · KTRAIL',
+		metaLeft: 'Lagos first',
+		metaCenter: 'Inbox · calendar · deposits',
+		imageCaption: 'Command · Fade District, Lekki',
+		backgroundText: 'KTRAIL OS',
 	},
 	about: {
-		heroSubtitle: 'About KTrail Style',
-		heroHeading: ['MANY CHAIRS,', 'ONE'],
-		heroHeadingAccent: 'Platform',
+		heroSubtitle: 'About KTrail',
+		heroHeading: ['THE SHOP', 'OPERATING'],
+		heroHeadingAccent: 'System',
 		heroBody:
-			'K-TRAIL HAIRCUT SERVICES builds KTrail Style so Nigerian barbers share a professional booking layer — and clients can preview the cut before they sit down.',
+			'KTrail is the desk a multi-chair shop uses to turn incoming requests into booked chairs, deposits, and returning clients.',
 		storyParagraphs: [
-			'K-TRAIL HAIRCUT SERVICES is registered in Ikole-Ekiti (CAC 9200929) for beauty and salon services. The software product under that entity is KTrail Style.',
-			'We are not building another single-shop brochure. The story is a network: independent barbers and small shops list chairs, clients discover them, and AI previews reduce “will this suit me?” friction.',
-			'Today the product is live for barbers and shops: list chairs, take bookings, and let clients preview the cut before they sit down.',
+			'K-TRAIL HAIRCUT SERVICES is registered in Ikole-Ekiti (CAC 9200929). The software product is KTrail OS — built for operators who already run a real shop and lose money in WhatsApp.',
+			'A 3–10 chair shop in Lagos does not need another lookbook. It needs one inbox, one calendar, one deposit trail, and a client record that survives the Saturday rush.',
+			'That is the company: request in, chair booked, revenue visible. Generational wealth starts when the shop can be handed down with its books intact.',
 		],
 	},
 	productShowcase: {
 		eyebrow: 'The product',
-		heading: 'Booking network + style AI',
-		body: 'Barbers get a shared front desk. Clients get a preview pack before they commit to the chair.',
+		heading: 'Inbox becomes revenue',
+		body: 'A request lands. KTrail prices it, matches a barber, finds a chair, and prepares the deposit.',
 		moments: [
 			{
 				title: 'Multi-barber discovery',
@@ -84,8 +83,8 @@ export const siteConfig = {
 	},
 	finalCta: {
 		eyebrow: 'Get started',
-		heading: 'Ready for the network?',
-		body: 'Log in to your shop or create an account. Book a walkthrough if you want a guided look at the product.',
+		heading: 'Open the shop desk',
+		body: 'Log in to Command or create an account. The first minute stays empty until you run Smart Inbox.',
 		cta: { label: 'Log in', href: '/login' },
 		secondaryCta: { label: 'Create account', href: '/signup' },
 		railText: 'LOG IN',
@@ -113,18 +112,18 @@ export const siteConfig = {
 	},
 	footer: {
 		description:
-			'Multi-barber booking and AI style previews for Nigerian barbers — operated by K-TRAIL HAIRCUT SERVICES.',
+			'KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients.',
 		productLinks: [
 			{ label: 'Product', href: '/product' },
-			{ label: 'How it works', href: '/how-it-works' },
-			{ label: 'Lookbook', href: '/lookbook' },
+			{ label: 'Command', href: '/dashboard' },
+			{ label: 'Inbox', href: '/new' },
+			{ label: 'Calendar', href: '/bookings' },
+			{ label: 'Clients', href: '/clients' },
 			{ label: 'Pricing', href: '/pricing' },
-			{ label: 'Log in', href: '/login' },
-			{ label: 'Create account', href: '/signup' },
 		],
 		resourceLinks: [
-			{ label: 'Journal', href: '/journal' },
-			{ label: 'Studio', href: '/studio' },
+			{ label: 'Insights', href: '/insights' },
+			{ label: 'Team roster', href: '/barbers' },
 			{ label: 'Help', href: '/help' },
 			{ label: 'Security', href: '/security' },
 		],
@@ -145,25 +144,25 @@ export const siteConfig = {
 
 	problems: [
 		{
-			title: 'WhatsApp booking chaos',
-			body: 'Nigerian barbers lose time and revenue to no-shows, double-bookings, and “are you free?” chats with no shared calendar.',
+			title: 'Revenue lives in chat',
+			body: 'Shops lose Saturday chairs to “you free?” threads, no-shows, and deposits that never get asked.',
 		},
 		{
-			title: 'Fear of the wrong cut',
-			body: 'Without a preview, clients hesitate, change their mind mid-chair, or never book premium styles.',
+			title: 'No shared front desk',
+			body: 'Four barbers means four inboxes. The owner cannot see occupancy, deposits, or who is actually booked.',
 		},
 		{
-			title: 'One-shop sites do not scale the trade',
-			body: 'A single-shop brochure site does not help the network of barbers who need a marketplace-style presence under one brand.',
+			title: 'Clients never become records',
+			body: 'A wedding taper walks in once, pays cash, and disappears. There is no follow-up, no lifetime value, no handoff.',
 		},
 	],
 
 	/** Capability metrics only — never fake traction */
 	stats: [
-		{ value: 'Multi-shop', label: 'Barber network model' },
-		{ value: 'AI preview', label: 'Style before you sit' },
-		{ value: '₦ pricing', label: 'Built for Nigeria' },
-		{ value: 'Ekiti → cities', label: 'Cities we serve' },
+		{ value: '3–10 chairs', label: 'First shop size' },
+		{ value: '₦ / month', label: 'Priced for Lagos shops' },
+		{ value: '90s intake', label: 'Request becomes a booking pack' },
+		{ value: 'One desk', label: 'Inbox, calendar, deposits' },
 	],
 
 	launchStrip: {
@@ -174,18 +173,18 @@ export const siteConfig = {
 	howItWorks: [
 		{
 			step: '01',
-			title: 'Barbers join the network',
-			body: 'List services, hours, and chairs under one KTrail Style presence.',
+			title: 'Drop the request in Inbox',
+			body: 'Paste a WhatsApp thread, upload a selfie, or use the Fade District sample.',
 		},
 		{
 			step: '02',
-			title: 'Clients preview the cut',
-			body: 'AI hairstyle changer shows options on the client’s own photo before they book.',
+			title: 'KTrail builds the booking pack',
+			body: 'Service, duration, price, barber match, chair, and deposit land together.',
 		},
 		{
 			step: '03',
-			title: 'Book the chair',
-			body: 'Clear appointment slots replace endless WhatsApp threads.',
+			title: 'Confirm and watch Command move',
+			body: 'Send WhatsApp confirmation. Utilization and projected revenue update on the same desk.',
 		},
 	],
 
@@ -213,28 +212,28 @@ export const siteConfig = {
 
 	features: [
 		{
-			title: 'Multi-barber booking',
-			body: 'One platform story for many chairs across Nigerian cities.',
+			title: 'Smart Client Inbox',
+			body: 'Turn a WhatsApp screenshot or selfie into a priced, matched booking pack.',
 		},
 		{
-			title: 'AI hairstyle changer',
-			body: 'Clients try cuts and colors on their photo before they sit down.',
+			title: 'Command',
+			body: 'See occupancy, deposits, projected revenue, and today’s work on one screen.',
 		},
 		{
-			title: 'Style library',
-			body: 'Curated fades, crops, beards, and color looks barbers can reference.',
+			title: 'Calendar',
+			body: 'Chairs and barbers share one schedule instead of four chat threads.',
 		},
 		{
-			title: 'Chair requests',
-			body: 'Turn a preview into a booking intent the barber can confirm.',
+			title: 'Client records',
+			body: 'Keep Tunde’s taper, spend, and next follow-up after the wedding.',
 		},
 		{
-			title: 'Naira-ready pricing',
-			body: 'Services and plans framed in ₦ for local shops.',
+			title: 'Naira SaaS pricing',
+			body: 'Monthly shop plans with chair limits — not a brochure price list.',
 		},
 		{
-			title: 'WhatsApp-friendly handoff',
-			body: 'Send a preview pack to the barber’s chat after the client picks a look.',
+			title: 'WhatsApp confirmation',
+			body: 'Approve the pack and open a real prefilled confirmation to the client.',
 		},
 	],
 
@@ -273,36 +272,36 @@ export const siteConfig = {
 
 	pricingTiers: [
 		{
-			name: 'Starter',
-			price: 'Free',
-			description: 'For barbers who want a booking home and style previews.',
-			cta: { label: 'Log in', href: '/login' },
-			highlights: ['Chair calendar', 'AI style previews', 'Client requests'],
+			name: 'Solo',
+			price: '₦8,500 / month',
+			description: 'One chair, one inbox, deposits, and WhatsApp confirmation.',
+			cta: { label: 'Start Solo', href: '/signup' },
+			highlights: ['1 chair', 'Smart Inbox', 'Client records'],
 		},
 		{
 			name: 'Shop',
-			price: 'Create account',
-			description: 'For shops listing multiple chairs under one KTrail Style presence.',
-			cta: { label: 'Create account', href: '/signup' },
-			highlights: ['Multi-barber listing', 'Style library', 'WhatsApp handoff'],
+			price: '₦24,000 / month',
+			description: 'For 3–10 chair independent shops. Command, calendar, and staff performance.',
+			cta: { label: 'Create shop account', href: '/signup' },
+			highlights: ['Up to 10 chairs', 'Deposits and occupancy', 'WhatsApp handoff'],
 		},
 		{
-			name: 'Studio',
-			price: 'Talk to us',
-			description: 'For multi-location shops that want a guided walkthrough.',
-			cta: { label: 'Book a walkthrough', href: '/demo' },
-			highlights: ['Guided setup', 'Network onboarding', 'Priority support'],
+			name: 'Multi-location',
+			price: '₦65,000 / month',
+			description: 'Two or more locations with a shared operator desk and walkthrough.',
+			cta: { label: 'Talk to sales', href: '/demo' },
+			highlights: ['Unlimited locations', 'Insights across shops', 'Priority onboarding'],
 		},
 	],
 
 	faq: [
 		{
-			q: 'Is KTrail Style a single barbershop website?',
-			a: 'No. It is a multi-barber platform — many chairs under one product, operated by K-TRAIL HAIRCUT SERVICES.',
+			q: 'Is KTrail a single barbershop website?',
+			a: 'No. KTrail is an operating system for multi-chair shops — inbox, calendar, deposits, staff, and client records.',
 		},
 		{
-			q: 'Is booking and AI live today?',
-			a: 'Yes. Sign in to manage chairs, run AI style previews, and take booking requests from the web app.',
+			q: 'Is the product live today?',
+			a: 'Yes. Sign in to open Command, run Smart Inbox, and confirm a booking over WhatsApp.',
 		},
 		{
 			q: 'Who is the legal entity?',

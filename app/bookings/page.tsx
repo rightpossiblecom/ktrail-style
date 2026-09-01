@@ -1,40 +1,51 @@
-import { siteConfig } from '@/config/site';
+'use client';
+
+import { formatNaira } from '@/lib/workspace/operations';
+import { useWorkspace } from '@/components/workspace/WorkspaceProvider';
 
 export default function BookingsPage() {
-	const { bookings } = siteConfig.dashboard;
+	const { workspace } = useWorkspace();
 
 	return (
 		<div className="space-y-8">
 			<div>
-				<p className="text-[0.65rem] uppercase tracking-[0.28em] text-[var(--color-copper)]">Schedule</p>
-				<h1 className="heading-display mt-2 text-3xl">Bookings</h1>
+				<p className="kicker">Calendar</p>
+				<h1 className="heading-display mt-2 text-3xl">Chairs and slots</h1>
 				<p className="mt-2 text-sm text-[var(--color-cream-muted)]">
-					Demo appointments with ₦ pricing.
+					Bookings created from Smart Inbox land here.
 				</p>
 			</div>
-			<div className="overflow-x-auto border border-[var(--color-line)]">
+			<div className="card overflow-x-auto">
 				<table className="w-full min-w-[720px] text-left text-sm">
-					<thead className="bg-[var(--color-bg-deep)] text-[0.6rem] uppercase tracking-[0.18em] text-[var(--color-cream-dim)]">
+					<thead className="bg-[var(--color-surface)] text-xs uppercase tracking-[0.08em] text-[var(--color-cream-dim)]">
 						<tr>
 							<th className="px-4 py-3">Client</th>
 							<th className="px-4 py-3">Barber</th>
 							<th className="px-4 py-3">Service</th>
 							<th className="px-4 py-3">When</th>
-							<th className="px-4 py-3">Status</th>
 							<th className="px-4 py-3">Price</th>
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-[var(--color-line)]">
-						{bookings.map((b) => (
-							<tr key={`${b.client}-${b.when}`} className="bg-[var(--color-bg)]">
-								<td className="px-4 py-3 text-[var(--color-cream)]">{b.client}</td>
-								<td className="px-4 py-3 text-[var(--color-cream-muted)]">{b.barber}</td>
-								<td className="px-4 py-3 text-[var(--color-cream-muted)]">{b.service}</td>
-								<td className="px-4 py-3 text-[var(--color-cream-muted)]">{b.when}</td>
-								<td className="px-4 py-3 text-[var(--color-copper)]">{b.status}</td>
-								<td className="px-4 py-3 text-[var(--color-cream)]">{b.price}</td>
+						{workspace.bookings.length === 0 ? (
+							<tr>
+								<td colSpan={5} className="px-4 py-8 text-[var(--color-cream-muted)]">
+									No bookings until a pack is approved.
+								</td>
 							</tr>
-						))}
+						) : (
+							workspace.bookings.map((booking) => (
+								<tr key={booking.id}>
+									<td className="px-4 py-3">{booking.clientName}</td>
+									<td className="px-4 py-3 text-[var(--color-cream-muted)]">{booking.barberName}</td>
+									<td className="px-4 py-3 text-[var(--color-cream-muted)]">
+										{booking.serviceDescription}
+									</td>
+									<td className="px-4 py-3 text-[var(--color-cream-muted)]">{booking.slot}</td>
+									<td className="px-4 py-3">{formatNaira(booking.price)}</td>
+								</tr>
+							))
+						)}
 					</tbody>
 				</table>
 			</div>

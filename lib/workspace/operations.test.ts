@@ -5,6 +5,8 @@ import {
 	approveRequest,
 	calculateMetrics,
 	composeWhatsAppMessage,
+	composeWhatsAppUrl,
+	DEMO_WHATSAPP_NUMBER,
 } from "./operations";
 
 describe("workspace domain", () => {
@@ -99,5 +101,13 @@ describe("workspace domain", () => {
 		expect(message).toContain("Thursday at 4:30 PM");
 		expect(message).toContain("₦8,500");
 		expect(message).toContain("₦3,000");
+	});
+
+	it("builds a wa.me confirmation link from the same request", () => {
+		const workspace = createSampleWorkspace();
+		const url = composeWhatsAppUrl(workspace, "req_tunde_wedding");
+
+		expect(url.startsWith(`https://wa.me/${DEMO_WHATSAPP_NUMBER}?text=`)).toBe(true);
+		expect(decodeURIComponent(url)).toContain("Tunde Adebayo");
 	});
 });

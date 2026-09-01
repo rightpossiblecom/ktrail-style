@@ -51,7 +51,7 @@ export default function DashboardAccountPage() {
 			<button
 				type="button"
 				onClick={signOut}
-				className="rounded-full border border-[var(--color-line-strong)] px-6 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-cream)] hover:border-[var(--color-copper)]"
+				className="btn-secondary"
 			>
 				Sign out
 			</button>

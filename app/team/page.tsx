@@ -12,8 +12,7 @@ export default function TeamPage() {
 				</p>
 				<h1 className="heading-display mt-6 text-5xl lg:text-7xl">The people behind {brandName}</h1>
 				<p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-cream-muted)]">
-					Operated by {legalName}. The founding team shipping multi-barber booking and AI style
-					previews for Nigerian shops.
+					Operated by {legalName}. The founding team shipping KTrail OS for multi-chair Nigerian shops.
 				</p>
 
 				<ul className="mt-16 grid gap-8 lg:grid-cols-2">
