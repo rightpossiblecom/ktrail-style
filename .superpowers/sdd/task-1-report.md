@@ -16,11 +16,29 @@
 - GREEN: `pnpm test -- lib/workspace/operations.test.ts` — 1 file passed, 6 tests passed.
 - FULL: `pnpm test` — 1 file passed, 6 tests passed.
 - DOMAIN TYPES: `pnpm exec tsc --noEmit --strict --noUncheckedIndexedAccess --target ES2017 --module esnext --moduleResolution bundler --skipLibCheck lib/workspace/types.ts lib/workspace/fixture.ts lib/workspace/operations.ts lib/workspace/operations.test.ts` — passed.
-- REPOSITORY TYPES: `pnpm exec tsc --noEmit` — failed on pre-existing application code outside the permitted task files, primarily because the installed `@opencals/storefront-sdk` declarations do not export types and fields consumed by the existing application.
+- INITIAL REPOSITORY TYPES: `pnpm exec tsc --noEmit` — failed because the first pnpm migration resolved `@opencals/storefront-sdk` 0.3.13 instead of the package-lock's compatible 0.3.1. This was introduced by Task 1 and was not pre-existing.
+
+## Review fix
+
+Fix files:
+
+- `package.json`
+- `pnpm-lock.yaml`
+- `.superpowers/sdd/task-1-report.md`
+
+The OpenCals dependency is now pinned as `"@opencals/storefront-sdk": "0.3.1"`. The pnpm lockfile was rebuilt by importing the original package-lock graph before adding the current Task 1 dependency state. `pnpm install --frozen-lockfile` confirmed the installed SDK changed from 0.3.13 to 0.3.1.
+
+Exact review verification:
+
+- `pnpm test -- lib/workspace/operations.test.ts` — exit 0; 1 test file passed and 6 tests passed.
+- `pnpm test` — exit 0; 1 test file passed and 6 tests passed.
+- `pnpm exec tsc --noEmit` — exit 0 with no diagnostics.
+- `pnpm list @opencals/storefront-sdk --depth 0` — reports `@opencals/storefront-sdk 0.3.1`.
 
 ## Commit hash
 
 Implementation commit: `fec2494`
+Dependency compatibility fix commit: `7671ec7`
 
 ## Self-review
 
@@ -32,4 +50,4 @@ Implementation commit: `fec2494`
 
 ## Concerns
 
-- The repository-wide TypeScript check remains blocked by existing `@opencals/storefront-sdk` API/type incompatibilities in files outside Task 1 scope. The new domain files pass an isolated strict TypeScript check with `noUncheckedIndexedAccess`.
+- None. The focused tests, complete test command, and full repository TypeScript check all pass after restoring OpenCals 0.3.1.
