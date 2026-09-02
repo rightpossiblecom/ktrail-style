@@ -17,3 +17,5 @@ firebase-debug.log
 *.tsbuildinfo
 next-env.d.ts
 /.idea
+.vercel
+.vercel
