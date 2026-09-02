@@ -22,22 +22,30 @@ export function Founders() {
 						.
 					</p>
 				</div>
-				<div className="mt-12 grid gap-8 lg:grid-cols-2">
+				<div className="mt-12 grid gap-12 lg:grid-cols-2">
 					{team.map((member) => (
 						<article key={member.name} className="border-t border-[var(--color-copper)]/50 pt-6">
+							<img
+								src={member.photo}
+								alt={member.name}
+								className="mb-6 aspect-[4/5] w-full object-cover object-top"
+							/>
 							<h3 className="heading-display text-xl">{member.name}</h3>
 							<p className="mt-2 text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-copper)]">
 								{member.role}
 							</p>
 							<p className="mt-3 text-sm leading-relaxed text-[var(--color-cream-muted)]">{member.bio}</p>
-							<a
-								href={member.linkedin}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-cobalt)]"
-							>
-								LinkedIn
-							</a>
+							<p className="mt-4">
+								<a href={member.linkedin} itemProp="sameAs" className="btn-primary">
+									click to view linkedin profile
+								</a>
+								<a
+									href={member.linkedin}
+									className="mt-3 block text-sm text-[var(--color-cobalt)] underline"
+								>
+									{member.linkedin}
+								</a>
+							</p>
 						</article>
 					))}
 				</div>

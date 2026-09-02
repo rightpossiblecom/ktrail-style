@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
+import { isFirebaseAdminConfigured } from '@/lib/firebase-admin';
+import { verifyFirebaseUser } from '@/lib/server/firebase-auth';
 import { writeSession } from '@/lib/server/session';
-import { authenticateUser } from '@/lib/server/users';
 
 export async function POST(request: Request) {
+	if (!isFirebaseAdminConfigured()) {
+		return NextResponse.json({ error: 'Accounts are not connected yet.' }, { status: 503 });
+	}
 	const body = (await request.json().catch(() => null)) as
 		| { email?: string; password?: string }
 		| null;
@@ -12,7 +16,7 @@ export async function POST(request: Request) {
 		return NextResponse.json({ error: 'Enter your email and password.' }, { status: 400 });
 	}
 	try {
-		const user = await authenticateUser(email, password);
+		const user = await verifyFirebaseUser(email, password);
 		await writeSession(user);
 		return NextResponse.json({ email: user.email });
 	} catch (error) {

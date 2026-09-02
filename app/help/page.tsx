@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function HelpPage() {
-	const { helpPage, faq, supportEmail, hero } = siteConfig;
+	const { helpPage, faq, hero } = siteConfig;
 
 	return (
 		<main className="bg-[var(--color-bg)] text-[var(--color-cream)]">
@@ -53,10 +53,10 @@ export default function HelpPage() {
 						Still stuck
 					</p>
 					<p className="mt-4 max-w-xl text-sm text-[var(--color-cream-muted)]">
-						Write{' '}
-						<a href={`mailto:${supportEmail}`} className="text-[var(--color-copper)] hover:underline">
-							{supportEmail}
-						</a>{' '}
+						Open{' '}
+						<Link href="/team" className="text-[var(--color-copper)] hover:underline">
+							/team
+						</Link>{' '}
 						or book a walkthrough if you want a guided look at the dashboard.
 					</p>
 					<div className="mt-8 flex flex-wrap gap-4">

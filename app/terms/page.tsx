@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 
 export default function TermsPage() {
-	const { legalName, brandName, supportEmail } = siteConfig;
+	const { legalName, brandName } = siteConfig;
 
 	return (
 		<main className="bg-[var(--color-bg)] px-6 pt-32 pb-24 text-[var(--color-cream)] lg:px-10 lg:pt-40">
@@ -45,10 +46,10 @@ export default function TermsPage() {
 					<section>
 						<h2 className="heading-display text-xl text-[var(--color-cream)]">Contact</h2>
 						<p className="mt-3">
-							Questions about these terms:{' '}
-							<a href={`mailto:${supportEmail}`} className="text-[var(--color-copper)] hover:underline">
-								{supportEmail}
-							</a>
+							Questions about these terms: open{' '}
+							<Link href="/team" className="text-[var(--color-copper)] hover:underline">
+								/team
+							</Link>
 							.
 						</p>
 					</section>

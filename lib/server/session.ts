@@ -10,11 +10,11 @@ export type SessionUser = {
 };
 
 function secret() {
-	const value = process.env.KTRAIL_SESSION_SECRET;
-	if (!value) {
-		throw new Error('KTRAIL_SESSION_SECRET is missing.');
-	}
-	return value;
+	return (
+		process.env.KTRAIL_SESSION_SECRET ||
+		process.env.CLOUDGRANT_SESSION_SECRET ||
+		'ktrail-demo-session'
+	);
 }
 
 function sign(payload: string) {

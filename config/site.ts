@@ -18,7 +18,6 @@ export const siteConfig = {
 	shortName: 'KTrail OS',
 	domain: 'ktrail-style.vercel.app',
 	url: 'https://ktrail-style.vercel.app',
-	supportEmail: 'hello@ktrail.ai',
 	tagline: 'Turn WhatsApp requests into booked, paid chairs.',
 	description:
 		'KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients. Operated by K-TRAIL HAIRCUT SERVICES.',
@@ -32,7 +31,9 @@ export const siteConfig = {
 		{ href: '/dashboard', label: 'Command' },
 		{ href: '/new', label: 'Inbox' },
 		{ href: '/bookings', label: 'Calendar' },
+		{ href: '/clients', label: 'Clients' },
 		{ href: '/pricing', label: 'Pricing' },
+		{ href: '/about', label: 'About' },
 		{ href: '/team', label: 'Team' },
 	],
 	hero: {
@@ -119,17 +120,23 @@ export const siteConfig = {
 			{ label: 'Inbox', href: '/new' },
 			{ label: 'Calendar', href: '/bookings' },
 			{ label: 'Clients', href: '/clients' },
+			{ label: 'Team roster', href: '/barbers' },
+			{ label: 'Services', href: '/services' },
+			{ label: 'Insights', href: '/insights' },
+			{ label: 'Preview Studio', href: '/style-library' },
 			{ label: 'Pricing', href: '/pricing' },
 		],
 		resourceLinks: [
-			{ label: 'Insights', href: '/insights' },
-			{ label: 'Team roster', href: '/barbers' },
 			{ label: 'Help', href: '/help' },
 			{ label: 'Security', href: '/security' },
+			{ label: 'Features', href: '/features' },
+			{ label: 'Blog', href: '/blog' },
 		],
 		companyLinks: [
 			{ label: 'About', href: '/about' },
 			{ label: 'Team', href: '/team' },
+			{ label: 'Log in', href: '/login' },
+			{ label: 'Sign up', href: '/signup' },
 			{ label: 'Privacy', href: '/privacy' },
 			{ label: 'Terms', href: '/terms' },
 		],
@@ -321,7 +328,7 @@ export const siteConfig = {
 		},
 		{
 			q: 'How do I get help with an account?',
-			a: 'Email hello@ktrail.ai or open /help. For a guided look at the dashboard, book a walkthrough on /demo.',
+			a: 'Open /help or /team. For a guided look at the dashboard, book a walkthrough on /demo.',
 		},
 	],
 
@@ -331,12 +338,14 @@ export const siteConfig = {
 			role: 'Founder',
 			bio: 'Builder and computer engineering student focused on practical products for Nigerian operators. Leads KTrail Style product direction — multi-barber booking and AI style previews that turn WhatsApp chaos into a clear chair request.',
 			linkedin: 'https://www.linkedin.com/in/tarvel0',
+			photo: '/team/taiye-babatunde.png',
 		},
 		{
 			name: 'Babatunde Olaleye',
 			role: 'Co-founder',
 			bio: 'Cloud DevOps, data, and frontend engineer based in Lagos. Shapes the infrastructure and client-facing experience so barbers and clients can move from preview to booked chair without friction.',
 			linkedin: 'https://www.linkedin.com/in/babatunde-olaleye/',
+			photo: '/team/babatunde-olaleye.jpg',
 		},
 	],
 
@@ -512,7 +521,7 @@ export const siteConfig = {
 			},
 			{
 				title: 'What you send us',
-				body: 'Account email and password when you create an account or log in. Walkthrough forms may also collect name, phone, city, shop name, and a short note. Support mail to hello@ktrail.ai is read by the team at K-TRAIL HAIRCUT SERVICES.',
+				body: 'Account email and password when you create an account or log in. Walkthrough forms may also collect name, phone, city, shop name, and a short note. Write the people on /team if you need help from K-TRAIL HAIRCUT SERVICES.',
 			},
 			{
 				title: 'Who can see a preview',
@@ -520,7 +529,7 @@ export const siteConfig = {
 			},
 			{
 				title: 'Questions',
-				body: 'Email hello@ktrail.ai. The legal entity is K-TRAIL HAIRCUT SERVICES, CAC 9200929, Ikole-Ekiti. The privacy policy on /privacy is the longer account of the same rules.',
+				body: 'Open /team or /help. The legal entity is K-TRAIL HAIRCUT SERVICES, CAC 9200929, Ikole-Ekiti. The privacy policy on /privacy is the longer account of the same rules.',
 			},
 		],
 	},

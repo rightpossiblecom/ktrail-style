@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function SecurityPage() {
-	const { securityPage, legalName, cacNumber, supportEmail } = siteConfig;
+	const { securityPage, legalName, cacNumber } = siteConfig;
 
 	return (
 		<main className="bg-[var(--color-bg)] text-[var(--color-cream)]">
@@ -67,9 +67,9 @@ export default function SecurityPage() {
 						<p className="font-medium text-[var(--color-cream)]">{legalName}</p>
 						<p className="mt-2">CAC {cacNumber}</p>
 						<p className="mt-2">
-							<a href={`mailto:${supportEmail}`} className="text-[var(--color-copper)] hover:underline">
-								{supportEmail}
-							</a>
+							<Link href="/team" className="text-[var(--color-copper)] hover:underline">
+								/team
+							</Link>
 						</p>
 						<div className="mt-6 flex flex-wrap gap-6">
 							<Link

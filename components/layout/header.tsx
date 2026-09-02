@@ -45,12 +45,12 @@ export function Header() {
 							</span>
 						</Link>
 
-						<nav className="hidden items-center gap-5 lg:flex xl:gap-8">
+						<nav className="hidden items-center gap-3 lg:flex xl:gap-5">
 							{navLinks.map((link) => (
 								<Link
 									key={link.href}
 									href={link.href}
-									className="text-sm font-medium text-[var(--color-cream-muted)] hover:text-[var(--color-ink)]"
+									className="text-[0.8rem] font-medium text-[var(--color-cream-muted)] hover:text-[var(--color-ink)] xl:text-sm"
 								>
 									{link.label}
 								</Link>

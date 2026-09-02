@@ -1,26 +1,35 @@
 import { createEmptyWorkspace } from '@/lib/workspace/fixture';
-import { getFirestore } from '@/lib/server/gcp';
+import { adminDb } from '@/lib/firebase-admin';
+import { col } from '@/lib/house';
 import type { KTrailWorkspace } from '@/lib/workspace/types';
 
-function workspaces() {
-	return getFirestore().collection('workspaces');
+function desks() {
+	return adminDb().collection(col('desk'));
 }
 
 export async function readWorkspace(uid: string): Promise<KTrailWorkspace> {
-	const snap = await workspaces().doc(uid).get();
-	const workspace = snap.data()?.workspace as KTrailWorkspace | undefined;
-	return workspace ?? createEmptyWorkspace();
+	try {
+		const snap = await desks().doc(uid).get();
+		const workspace = snap.data()?.workspace as KTrailWorkspace | undefined;
+		return workspace ?? createEmptyWorkspace();
+	} catch {
+		return createEmptyWorkspace();
+	}
 }
 
 export async function writeWorkspace(uid: string, workspace: KTrailWorkspace) {
-	await workspaces().doc(uid).set(
-		{
-			version: 1,
-			workspace,
-			updatedAt: new Date().toISOString(),
-		},
-		{ merge: true },
-	);
+	try {
+		await desks().doc(uid).set(
+			{
+				version: 1,
+				workspace,
+				updatedAt: new Date().toISOString(),
+			},
+			{ merge: true },
+		);
+	} catch {
+		// Desk still works from the browser session when Cloud is down.
+	}
 	return workspace;
 }
 

@@ -1,6 +1,15 @@
 export const firebasePublicConfig = {
-	apiKey: "AIzaSyCwwo065iloe7w4NZzdU3nfzTdoM4QFUBQ",
-	authDomain: 'ktrail-os.firebaseapp.com',
-	projectId: 'ktrail-os',
-	storageBucket: 'ktrail-os.firebasestorage.app',
+	apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY ?? process.env.CLOUDGRANT_WEB_API_KEY ?? '',
+	authDomain:
+		process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ??
+		process.env.CLOUDGRANT_AUTH_DOMAIN ??
+		'woven-benefit-434807-g6.firebaseapp.com',
+	projectId:
+		process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ??
+		process.env.CLOUDGRANT_GCP_PROJECT ??
+		'woven-benefit-434807-g6',
+	storageBucket:
+		process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ??
+		process.env.CLOUDGRANT_STORAGE_BUCKET ??
+		'woven-benefit-434807-g6.firebasestorage.app',
 } as const;

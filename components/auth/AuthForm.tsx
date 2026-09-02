@@ -2,16 +2,15 @@
 
 import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 
 const fieldClass =
 	'mt-2 w-full rounded-xl border border-[var(--color-line-strong)] bg-[var(--color-bg)] px-4 py-3 text-sm outline-none focus:border-[var(--color-cobalt)]';
 
 export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
-	const router = useRouter();
 	const [error, setError] = useState('');
 	const [busy, setBusy] = useState(false);
+	const [verifyEmail, setVerifyEmail] = useState('');
 
 	async function onSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -29,14 +28,35 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ email, password }),
 		});
-		const data = (await response.json()) as { error?: string };
+		const data = (await response.json()) as { error?: string; verify?: boolean };
 		setBusy(false);
 		if (!response.ok) {
 			setError(data.error || 'That did not work.');
 			return;
 		}
-		router.push('/dashboard');
-		router.refresh();
+		if (mode === 'signup') {
+			setVerifyEmail(email);
+			return;
+		}
+		window.location.assign('/dashboard');
+	}
+
+	if (mode === 'signup' && verifyEmail) {
+		return (
+			<main className="flex min-h-dvh items-center justify-center bg-[var(--color-bg)] px-4 py-10 sm:px-6 sm:py-16">
+				<div className="card w-full max-w-md p-6 sm:p-8">
+					<p className="kicker">{siteConfig.brandName}</p>
+					<h1 className="heading-display mt-4 text-[1.75rem] sm:text-3xl">Check your email</h1>
+					<p className="mt-3 text-sm leading-relaxed text-[var(--color-cream-muted)]">
+						We sent a verification note to <span className="text-[var(--color-ink)]">{verifyEmail}</span>.
+						Open that mail, then log in to Command.
+					</p>
+					<Link href="/login" className="btn-primary mt-8 w-full">
+						Go to log in
+					</Link>
+				</div>
+			</main>
+		);
 	}
 
 	return (
@@ -48,8 +68,8 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 				</h1>
 				<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
 					{mode === 'login'
-						? 'Use the email and password for your KTrail shop. The desk loads from your live workspace.'
-						: 'This creates a real shop account. Inbox, calendar, and Command stay empty until you run a request.'}
+						? 'Use the email and password you created for this shop.'
+						: 'This creates a real shop account. Check the verify screen, then log in.'}
 				</p>
 				<form onSubmit={onSubmit} className="mt-8 space-y-5">
 					<div>

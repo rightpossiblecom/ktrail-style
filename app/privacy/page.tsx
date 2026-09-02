@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 
 export default function PrivacyPage() {
-	const { legalName, brandName, supportEmail, address } = siteConfig;
+	const { legalName, brandName, address } = siteConfig;
 
 	return (
 		<main className="bg-[var(--color-bg)] px-6 pt-32 pb-24 text-[var(--color-cream)] lg:px-10 lg:pt-40">
@@ -19,10 +20,10 @@ export default function PrivacyPage() {
 						<h2 className="heading-display text-xl text-[var(--color-cream)]">Who we are</h2>
 						<p className="mt-3">
 							{legalName} ({address}) operates {brandName}, a multi-barber booking and style-preview
-							product. Contact:{' '}
-							<a href={`mailto:${supportEmail}`} className="text-[var(--color-copper)] hover:underline">
-								{supportEmail}
-							</a>
+							product. The named people are on{' '}
+							<Link href="/team" className="text-[var(--color-copper)] hover:underline">
+								/team
+							</Link>
 							.
 						</p>
 					</section>
@@ -39,10 +40,10 @@ export default function PrivacyPage() {
 					<section>
 						<h2 className="heading-display text-xl text-[var(--color-cream)]">What we store</h2>
 						<p className="mt-3">
-							Account email and a password hash are stored in Google Cloud Firestore on project
-							ktrail-os. Your shop workspace — requests, bookings, clients, and deposits — is stored
-							in the same database under your account. Session cookies stay on this device. We do
-							not sell personal information.
+							Account email and a password hash are stored in Google Cloud Firestore. Your shop
+							workspace — requests, bookings, clients, and deposits — is stored in the same database
+							under your account. Session cookies stay on this device. We do not sell personal
+							information.
 						</p>
 					</section>
 
@@ -50,7 +51,7 @@ export default function PrivacyPage() {
 						<h2 className="heading-display text-xl text-[var(--color-cream)]">Your choices</h2>
 						<p className="mt-3">
 							You can sign out from Account in the dashboard. Clearing site data in your browser
-							removes the local session and stored product activity. Email {supportEmail} if you
+							removes the local session and stored product activity. Open /team or /help if you
 							want help with an account request.
 						</p>
 					</section>

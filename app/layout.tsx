@@ -76,7 +76,6 @@ export default function RootLayout({
 							alternateName: siteConfig.brandName,
 							description: siteConfig.description,
 							url: siteConfig.url,
-							email: siteConfig.supportEmail,
 							address: {
 								'@type': 'PostalAddress',
 								streetAddress: siteConfig.address,

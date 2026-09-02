@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
-import { writeSession } from '@/lib/server/session';
-import { createUser } from '@/lib/server/users';
-import { writeWorkspace } from '@/lib/server/workspace-db';
-import { createEmptyWorkspace } from '@/lib/workspace/fixture';
+import { isFirebaseAdminConfigured } from '@/lib/firebase-admin';
+import { createFirebaseUser } from '@/lib/server/firebase-auth';
 
 export async function POST(request: Request) {
+	if (!isFirebaseAdminConfigured()) {
+		return NextResponse.json({ error: 'Accounts are not connected yet.' }, { status: 503 });
+	}
 	const body = (await request.json().catch(() => null)) as
 		| { email?: string; password?: string }
 		| null;
@@ -17,10 +18,8 @@ export async function POST(request: Request) {
 		return NextResponse.json({ error: 'Use at least 8 characters.' }, { status: 400 });
 	}
 	try {
-		const user = await createUser(email, password);
-		await writeWorkspace(user.uid, createEmptyWorkspace());
-		await writeSession(user);
-		return NextResponse.json({ email: user.email });
+		await createFirebaseUser(email, password);
+		return NextResponse.json({ verify: true, email: email.toLowerCase() });
 	} catch (error) {
 		return NextResponse.json(
 			{ error: error instanceof Error ? error.message : 'Could not create the account.' },

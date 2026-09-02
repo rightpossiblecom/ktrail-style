@@ -1,25 +1,25 @@
+KTrail
+
 KTrail helps barbershops turn WhatsApp requests into booked, paid chairs and returning clients.
 
-Product: KTrail OS
-Operator: K-TRAIL HAIRCUT SERVICES
-Founders: Taiye Babatunde, Babatunde Olaleye
-Team page: /team
-
 Paths
-/ product landing
 /product
 /team
-/pricing
 /about
+/pricing
 /login
 /signup
-/dashboard Command
-/new Smart Inbox
-/bookings Calendar
+/dashboard
+/new
+/bookings
 /clients
-/barbers Team
+/barbers
 /services
 /insights
-/style-library Preview Studio
+/style-library
+/help
+/security
+/features
+/blog
 /privacy
 /terms

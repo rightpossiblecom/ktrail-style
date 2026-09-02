@@ -19,12 +19,6 @@ export function Footer() {
 						<p className="mt-4 text-xs uppercase tracking-[0.18em] text-[var(--color-cream-dim)]">
 							{siteConfig.legalName} · CAC {siteConfig.cacNumber}
 						</p>
-						<a
-							href={`mailto:${siteConfig.supportEmail}`}
-							className="mt-3 inline-block text-sm text-[var(--color-cream)]/75 transition-colors hover:text-[var(--color-gold)]"
-						>
-							{siteConfig.supportEmail}
-						</a>
 					</div>
 
 					<div>

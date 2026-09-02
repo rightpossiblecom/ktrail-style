@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+
+export const metadata: Metadata = {
+	title: 'Product',
+	description: siteConfig.oneLiner,
+};
 
 const screenshots = [
 	{ src: '/product/shot-dashboard.png', label: 'Overview dashboard' },
@@ -10,7 +16,7 @@ const screenshots = [
 ];
 
 export default function ProductPage() {
-	const { brandName, oneLiner, howItWorks, features, legalName, cacNumber, natureOfBusiness, address } =
+	const { oneLiner, howItWorks, features, legalName, cacNumber, natureOfBusiness, address } =
 		siteConfig;
 
 	return (
@@ -19,9 +25,11 @@ export default function ProductPage() {
 				<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-copper)]">
 					Product
 				</p>
-				<h1 className="heading-display mt-6 text-5xl lg:text-7xl">{brandName}</h1>
+				<h1 className="heading-display mt-6 text-4xl leading-tight lg:text-6xl">{oneLiner}</h1>
 				<p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-cream-muted)]">
-					{oneLiner}
+					A 3–10 chair shop in Lagos pastes a request. KTrail prices it, matches a barber, finds a
+					chair, and prepares the deposit — so the next generation inherits a shop with its books
+					intact, not a WhatsApp pile.
 				</p>
 			</section>
 
