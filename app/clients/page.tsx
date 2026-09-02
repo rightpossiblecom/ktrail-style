@@ -10,7 +10,9 @@ export default function ClientsPage() {
 		<div className="space-y-8">
 			<div>
 				<p className="kicker">Clients</p>
-				<h1 className="heading-display mt-2 text-3xl">Records that survive Saturday</h1>
+				<h1 className="heading-display mt-2 text-[1.75rem] leading-tight sm:text-3xl">
+					Records that survive Saturday
+				</h1>
 			</div>
 			<div className="grid gap-4">
 				{workspace.clients.length === 0 ? (

@@ -36,7 +36,7 @@ export function QuoteSlab() {
 					<p className="heading-display-italic text-3xl leading-[1.15] text-[var(--color-cream)] sm:text-4xl lg:text-6xl">
 						&ldquo;{current.quote}&rdquo;
 					</p>
-					<footer className="mt-12 flex items-center justify-between border-t border-[var(--color-line-strong)] pt-6">
+					<footer className="mt-12 flex flex-col gap-4 border-t border-[var(--color-line-strong)] pt-6 sm:flex-row sm:items-center sm:justify-between">
 						<div>
 							<cite className="not-italic text-base font-medium text-[var(--color-cream)]">
 								{current.author}

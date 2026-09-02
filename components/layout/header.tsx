@@ -36,8 +36,8 @@ export function Header() {
 						: 'bg-transparent'
 				}`}
 			>
-				<div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-					<div className="flex h-20 items-center justify-between">
+				<div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+					<div className="flex h-16 items-center justify-between sm:h-20">
 						<Link href="/" className="relative z-10">
 							<span className="heading-display text-2xl">
 								{siteConfig.logo.text}
@@ -105,40 +105,40 @@ export function Header() {
 						transition={{ duration: 0.3 }}
 						className="fixed inset-0 z-40 bg-[var(--color-bg)]"
 					>
-						<div className="flex h-full flex-col items-center justify-center gap-8 px-6">
+						<div className="flex h-full flex-col items-stretch justify-center gap-3 overflow-y-auto px-6 py-24">
 							{navLinks.map((link, i) => (
 								<motion.div
 									key={link.href}
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 12 }}
 									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: i * 0.1 + 0.2 }}
+									transition={{ delay: i * 0.04 }}
 								>
 									<Link
 										href={link.href}
 										onClick={() => setIsMobileMenuOpen(false)}
-										className="heading-display text-5xl text-[var(--color-cream)] transition-colors hover:text-[var(--color-gold)]"
+										className="block rounded-2xl px-2 py-3 text-2xl font-semibold text-[var(--color-ink)]"
 									>
 										{link.label}
 									</Link>
 								</motion.div>
 							))}
 							<motion.div
-								initial={{ opacity: 0, y: 20 }}
+								initial={{ opacity: 0, y: 12 }}
 								animate={{ opacity: 1, y: 0 }}
-								transition={{ delay: navLinks.length * 0.08 + 0.2 }}
-								className="mt-4 flex flex-col items-center gap-4"
+								transition={{ delay: navLinks.length * 0.04 }}
+								className="mt-4 flex flex-col gap-3"
 							>
 								<Link
 									href={siteConfig.hero.cta.href}
 									onClick={() => setIsMobileMenuOpen(false)}
-									className="rounded-full bg-[var(--color-gold)] px-10 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-bg)] transition-all hover:bg-[var(--color-gold-bright)]"
+									className="btn-primary w-full"
 								>
 									{siteConfig.hero.cta.label}
 								</Link>
 								<Link
 									href={siteConfig.hero.secondaryCta.href}
 									onClick={() => setIsMobileMenuOpen(false)}
-									className="text-sm font-medium text-[var(--color-cream-muted)] hover:text-[var(--color-gold)]"
+									className="btn-secondary w-full"
 								>
 									{siteConfig.hero.secondaryCta.label}
 								</Link>

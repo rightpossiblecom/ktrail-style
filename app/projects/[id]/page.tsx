@@ -50,7 +50,7 @@ export default function ProjectResultPage() {
 		<div className="mx-auto max-w-2xl space-y-8">
 			<div>
 				<p className="kicker">Booking pack</p>
-				<h1 className="heading-display mt-2 text-4xl">{request.clientName}</h1>
+				<h1 className="heading-display mt-2 text-[1.85rem] leading-tight sm:text-4xl">{request.clientName}</h1>
 				<p className="mt-2 text-sm text-[var(--color-cream-muted)]">
 					{workspace.shop.name} · {workspace.shop.city}
 				</p>
@@ -70,7 +70,7 @@ export default function ProjectResultPage() {
 					Confirmed. Command, Calendar, and Clients now share this booking.
 				</p>
 			) : (
-				<button type="button" onClick={confirmAndSend} className="btn-primary">
+				<button type="button" onClick={confirmAndSend} className="btn-primary w-full sm:w-auto">
 					Send WhatsApp confirmation
 				</button>
 			)}

@@ -33,10 +33,10 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 
 	if (verify) {
 		return (
-			<main className="flex min-h-screen items-center justify-center bg-[var(--color-bg)] px-6 py-16">
-				<div className="card w-full max-w-md p-8">
+			<main className="flex min-h-dvh items-center justify-center bg-[var(--color-bg)] px-4 py-10 sm:px-6 sm:py-16">
+				<div className="card w-full max-w-md p-6 sm:p-8">
 					<p className="kicker">{siteConfig.brandName}</p>
-					<h1 className="heading-display mt-4 text-3xl">Check your email</h1>
+					<h1 className="heading-display mt-4 text-[1.75rem] sm:text-3xl">Check your email</h1>
 					<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
 						We sent a verification link. After you confirm, log in with any email and password to open Command.
 					</p>
@@ -49,10 +49,10 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
 	}
 
 	return (
-		<main className="flex min-h-screen items-center justify-center bg-[var(--color-bg)] px-6 py-16">
-			<div className="card w-full max-w-md p-8">
+		<main className="flex min-h-dvh items-center justify-center bg-[var(--color-bg)] px-4 py-10 sm:px-6 sm:py-16">
+			<div className="card w-full max-w-md p-6 sm:p-8">
 				<p className="kicker">{siteConfig.brandName}</p>
-				<h1 className="heading-display mt-4 text-3xl">
+				<h1 className="heading-display mt-4 text-[1.75rem] sm:text-3xl">
 					{mode === 'login' ? 'Log in to Command' : 'Create your shop account'}
 				</h1>
 				<p className="mt-3 text-sm text-[var(--color-cream-muted)]">

@@ -18,10 +18,10 @@ export default function DashboardOverviewPage() {
 
 	return (
 		<div className="space-y-8">
-			<div className="flex flex-wrap items-end justify-between gap-4">
+			<div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
 				<div>
 					<p className="kicker">Command</p>
-					<h1 className="heading-display mt-2 text-4xl">
+					<h1 className="heading-display mt-2 text-[1.85rem] leading-tight sm:text-4xl">
 						{empty ? 'The desk is dark' : `Welcome${email ? `, ${email.split('@')[0]}` : ''}`}
 					</h1>
 					<p className="mt-2 text-sm text-[var(--color-cream-muted)]">
@@ -30,7 +30,7 @@ export default function DashboardOverviewPage() {
 							: `${workspace.shop.name} · ${workspace.shop.city}`}
 					</p>
 				</div>
-				<Link href="/new" className="btn-primary">
+				<Link href="/new" className="btn-primary w-full sm:w-auto">
 					{empty ? 'Open Inbox' : 'New request'}
 				</Link>
 			</div>
@@ -44,18 +44,18 @@ export default function DashboardOverviewPage() {
 				</div>
 			) : (
 				<>
-					<div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+					<div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
 						{[
 							{ label: 'Utilization', value: `${metrics.utilizationPercent}%`, hint: 'Chairs booked this week' },
 							{ label: 'Projected revenue', value: formatNaira(metrics.projectedRevenue), hint: 'From confirmed packs' },
 							{ label: 'Deposits due', value: formatNaira(metrics.depositTotal), hint: 'Waiting on WhatsApp confirm' },
 							{ label: 'Clients', value: String(metrics.clientCount), hint: `${metrics.bookingCount} bookings` },
 						].map((kpi) => (
-							<div key={kpi.label} className="card p-5">
+							<div key={kpi.label} className="card p-4 sm:p-5">
 								<p className="text-xs uppercase tracking-[0.08em] text-[var(--color-cream-dim)]">
 									{kpi.label}
 								</p>
-								<p className="heading-display mt-3 text-3xl">{kpi.value}</p>
+								<p className="heading-display mt-3 text-2xl sm:text-3xl">{kpi.value}</p>
 								<p className="mt-2 text-xs text-[var(--color-cream-muted)]">{kpi.hint}</p>
 							</div>
 						))}

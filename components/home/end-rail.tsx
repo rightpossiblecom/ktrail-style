@@ -17,7 +17,7 @@ export function EndRail() {
 					<p className="text-[0.65rem] font-medium uppercase tracking-[0.32em] text-[var(--color-bg-deep)]/70">
 						{finalCta.eyebrow}
 					</p>
-					<h2 className="heading-display mt-6 text-5xl text-[var(--color-bg-deep)] lg:text-7xl">
+					<h2 className="heading-display mt-6 text-[2.1rem] leading-tight text-[var(--color-bg-deep)] sm:text-5xl lg:text-7xl">
 						<span className="heading-display-italic">{finalCta.heading}</span>
 					</h2>
 					<p className="mt-6 max-w-md text-base leading-relaxed text-[var(--color-bg-deep)]/85">
@@ -43,7 +43,7 @@ export function EndRail() {
 				</div>
 
 				<div
-					className="image-placeholder relative bg-[var(--color-surface)] lg:col-span-3"
+					className="image-placeholder relative min-h-44 bg-[var(--color-surface)] lg:col-span-3 lg:min-h-0"
 					style={{
 						backgroundImage: `url('/images/hero/end-rail.jpg')`,
 						backgroundSize: 'cover',

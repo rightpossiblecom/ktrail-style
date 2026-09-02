@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Manrope } from 'next/font/google';
 import { AppShell } from '@/components/layout/AppShell';
 import { Providers } from '@/components/providers';
@@ -16,6 +16,12 @@ const manrope = Manrope({
 	variable: '--font-manrope',
 	display: 'swap',
 });
+
+export const viewport: Viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	viewportFit: 'cover',
+};
 
 const title = `${siteConfig.brandName} — ${siteConfig.tagline}`;
 

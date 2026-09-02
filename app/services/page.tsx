@@ -10,7 +10,7 @@ export default function ServicesPage() {
 		<div className="space-y-8">
 			<div>
 				<p className="kicker">Services</p>
-				<h1 className="heading-display mt-2 text-3xl">Price, time, deposit</h1>
+				<h1 className="heading-display mt-2 text-[1.75rem] leading-tight sm:text-3xl">Price, time, deposit</h1>
 			</div>
 			<div className="grid gap-4 sm:grid-cols-2">
 				{workspace.services.length === 0 ? (

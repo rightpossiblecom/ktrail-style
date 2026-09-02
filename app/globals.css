@@ -75,18 +75,21 @@ body {
 	box-shadow: 0 12px 40px rgba(17, 19, 24, 0.04);
 }
 
-.btn-primary,
-.btn-secondary {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	border-radius: 999px;
-	padding: 0.85rem 1.25rem;
-	font-size: 0.9rem;
-	font-weight: 600;
-	transition: transform 140ms var(--ease-out), background-color 160ms var(--ease-out),
-		color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+@layer components {
+	.btn-primary,
+	.btn-secondary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-height: 44px;
+		border-radius: 999px;
+		padding: 0.7rem 1.1rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+		transition: transform 140ms var(--ease-out), background-color 160ms var(--ease-out),
+			color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+	}
 }
 
 .btn-primary {

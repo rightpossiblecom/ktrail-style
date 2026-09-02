@@ -67,23 +67,26 @@ export default function InboxPage() {
 
 	if (analyzing) {
 		return (
-			<div className="mx-auto max-w-lg space-y-6">
+			<div className="mx-auto max-w-lg space-y-5">
 				<p className="kicker">Smart Inbox</p>
-				<h1 className="heading-display text-3xl">Building the booking pack</h1>
+				<h1 className="heading-display text-[1.75rem] leading-tight sm:text-3xl">Building the booking pack</h1>
 				<p className="text-sm text-[var(--color-cream-muted)]">
 					{Math.ceil(remaining / 1000)} seconds remaining. Leave if you want — we will write when it is done.
 				</p>
 				<ul className="card divide-y divide-[var(--color-line)]">
 					{STAGES.map((stage, index) => (
-						<li key={stage} className="flex items-center justify-between px-5 py-4 text-sm">
-							<span>{stage}</span>
-							<span className="text-xs font-semibold text-[var(--color-success)]">
+						<li
+							key={stage}
+							className="flex items-start justify-between gap-4 px-4 py-3.5 text-sm sm:items-center sm:px-5"
+						>
+							<span className="min-w-0 pr-2 leading-snug">{stage}</span>
+							<span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-success)] sm:pt-0 sm:text-xs">
 								{index < stageIndex ? 'Done' : index === stageIndex ? 'Running' : 'Queued'}
 							</span>
 						</li>
 					))}
 				</ul>
-				<label className="flex items-center gap-3 text-sm">
+				<label className="flex min-h-11 items-center gap-3 text-sm">
 					<input
 						type="checkbox"
 						checked={notify}
@@ -107,7 +110,7 @@ export default function InboxPage() {
 		<div className="mx-auto max-w-lg space-y-8">
 			<div>
 				<p className="kicker">Smart Inbox</p>
-				<h1 className="heading-display mt-2 text-3xl">New client request</h1>
+				<h1 className="heading-display mt-2 text-[1.75rem] leading-tight sm:text-3xl">New client request</h1>
 				<p className="mt-3 text-sm text-[var(--color-cream-muted)]">
 					Upload a WhatsApp screenshot or selfie, or type the request. Use the Fade District sample for the recording.
 				</p>
@@ -126,17 +129,17 @@ export default function InboxPage() {
 					/>
 				</div>
 				<div>
-					<label className="text-xs font-semibold uppercase tracking-[0.08em]" htmlFor="artifact">
-						WhatsApp screenshot or selfie
+					<p className="text-xs font-semibold uppercase tracking-[0.08em]">WhatsApp screenshot or selfie</p>
+					<label className="btn-secondary mt-2 w-full cursor-pointer">
+						<input
+							id="artifact"
+							type="file"
+							accept="image/*"
+							onChange={(event) => setFileName(event.target.files?.[0]?.name ?? '')}
+							className="sr-only"
+						/>
+						{fileName || 'Choose screenshot or selfie'}
 					</label>
-					<input
-						id="artifact"
-						type="file"
-						accept="image/*"
-						onChange={(event) => setFileName(event.target.files?.[0]?.name ?? '')}
-						className={`${fieldClass} file:mr-4 file:border-0 file:bg-[var(--color-cobalt)] file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white`}
-					/>
-					{fileName && <p className="mt-2 text-xs text-[var(--color-cream-dim)]">{fileName}</p>}
 				</div>
 				<div>
 					<label className="text-xs font-semibold uppercase tracking-[0.08em]" htmlFor="requestText">
@@ -152,11 +155,11 @@ export default function InboxPage() {
 					/>
 				</div>
 				{error && <p className="text-sm text-[var(--color-cobalt)]">{error}</p>}
-				<div className="flex flex-wrap gap-3">
-					<button type="button" onClick={fillSample} className="btn-secondary">
+				<div className="flex flex-col gap-3 sm:flex-row">
+					<button type="button" onClick={fillSample} className="btn-secondary w-full sm:w-auto">
 						Use Fade District sample
 					</button>
-					<button type="submit" className="btn-primary">
+					<button type="submit" className="btn-primary w-full sm:w-auto">
 						Run analysis
 					</button>
 				</div>

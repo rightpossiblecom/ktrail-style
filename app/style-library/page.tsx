@@ -10,7 +10,7 @@ export default function StyleLibraryPage() {
 		<div className="space-y-8">
 			<div>
 				<p className="kicker">Preview Studio</p>
-				<h1 className="heading-display mt-2 text-3xl">Styles tied to bookings</h1>
+				<h1 className="heading-display mt-2 text-[1.75rem] leading-tight sm:text-3xl">Styles tied to bookings</h1>
 				<p className="mt-2 text-sm text-[var(--color-cream-muted)]">
 					Consultation tools stay attached to the active shop case.
 				</p>
