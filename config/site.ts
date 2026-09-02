@@ -16,8 +16,8 @@ export const siteConfig = {
 	foundedYear: 2026,
 	brandName: 'KTrail',
 	shortName: 'KTrail OS',
-	domain: 'ktrail.ai',
-	url: 'https://ktrail.ai',
+	domain: 'ktrail-style.vercel.app',
+	url: 'https://ktrail-style.vercel.app',
 	supportEmail: 'hello@ktrail.ai',
 	tagline: 'Turn WhatsApp requests into booked, paid chairs.',
 	description:
@@ -301,7 +301,7 @@ export const siteConfig = {
 		},
 		{
 			q: 'Is the product live today?',
-			a: 'Yes. Sign in to open Command, run Smart Inbox, and confirm a booking over WhatsApp.',
+			a: 'Yes. Create a shop account, sign in, and Command reads from the live KTrail workspace in Google Cloud.',
 		},
 		{
 			q: 'Who is the legal entity?',

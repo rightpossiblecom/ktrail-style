@@ -39,9 +39,10 @@ export default function PrivacyPage() {
 					<section>
 						<h2 className="heading-display text-xl text-[var(--color-cream)]">What we store</h2>
 						<p className="mt-3">
-							Session details stay in your browser so you remain signed in on this device. Style
-							previews and booking activity you generate in the product are stored locally on your
-							device for that session. We do not sell personal information.
+							Account email and a password hash are stored in Google Cloud Firestore on project
+							ktrail-os. Your shop workspace — requests, bookings, clients, and deposits — is stored
+							in the same database under your account. Session cookies stay on this device. We do
+							not sell personal information.
 						</p>
 					</section>
 

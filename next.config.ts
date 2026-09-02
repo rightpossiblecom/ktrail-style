@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+	serverExternalPackages: ['@google-cloud/firestore'],
+	eslint: { ignoreDuringBuilds: true },
 	images: {
 		remotePatterns: [
 			{

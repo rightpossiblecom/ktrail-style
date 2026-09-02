@@ -3,7 +3,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { getSession, type Session } from '@/lib/session';
+import { useAuthSession } from '@/components/auth/AuthSessionProvider';
 import { useWorkspace } from '@/components/workspace/WorkspaceProvider';
 import { siteConfig } from '@/config/site';
 
@@ -30,23 +30,15 @@ function isActive(pathname: string, href: string) {
 export function DashboardShell({ children }: { children: ReactNode }) {
 	const router = useRouter();
 	const pathname = usePathname() || '/dashboard';
-	const [session, setSessionState] = useState<Session | null>(() =>
-		typeof window === 'undefined' ? null : getSession(),
-	);
-	const [ready, setReady] = useState(() => typeof window !== 'undefined' && Boolean(getSession()));
+	const { session, ready } = useAuthSession();
 	const [menuOpen, setMenuOpen] = useState(false);
 	const { resetWorkspace } = useWorkspace();
 	const current = nav.find((item) => isActive(pathname, item.href)) ?? nav[0];
 
 	useEffect(() => {
-		const s = getSession();
-		if (!s) {
-			router.replace('/login');
-			return;
-		}
-		setSessionState(s);
-		setReady(true);
-	}, [router]);
+		if (!ready) return;
+		if (!session) router.replace('/login');
+	}, [ready, router, session]);
 
 	useEffect(() => {
 		setMenuOpen(false);

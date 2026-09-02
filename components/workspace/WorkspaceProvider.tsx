@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
 	createContext,
@@ -8,22 +8,12 @@ import {
 	useMemo,
 	useState,
 	type ReactNode,
-} from "react";
+} from 'react';
 
-import { createEmptyWorkspace, createSampleWorkspace } from "@/lib/workspace/fixture";
-import {
-	approveRequest,
-	calculateMetrics,
-} from "@/lib/workspace/operations";
-import {
-	loadWorkspace,
-	persistWorkspaceUpdate,
-	resetWorkspace as resetStoredWorkspace,
-} from "@/lib/workspace/storage";
-import type {
-	KTrailWorkspace,
-	WorkspaceMetrics,
-} from "@/lib/workspace/types";
+import { useAuthSession } from '@/components/auth/AuthSessionProvider';
+import { createEmptyWorkspace, createSampleWorkspace } from '@/lib/workspace/fixture';
+import { approveRequest, calculateMetrics } from '@/lib/workspace/operations';
+import type { KTrailWorkspace, WorkspaceMetrics } from '@/lib/workspace/types';
 
 interface WorkspaceContextValue {
 	workspace: KTrailWorkspace;
@@ -34,27 +24,49 @@ interface WorkspaceContextValue {
 	resetWorkspace(): void;
 }
 
-const WorkspaceContext = createContext<WorkspaceContextValue | undefined>(
-	undefined,
-);
+const WorkspaceContext = createContext<WorkspaceContextValue | undefined>(undefined);
+
+async function saveRemote(workspace: KTrailWorkspace) {
+	await fetch('/api/workspace', {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ workspace }),
+	});
+}
 
 export function WorkspaceProvider({ children }: { children: ReactNode }) {
+	const { session, ready } = useAuthSession();
 	const [workspace, setWorkspace] = useState(createEmptyWorkspace);
 	const [hydrated, setHydrated] = useState(false);
 
 	useEffect(() => {
-		setWorkspace(loadWorkspace(window.localStorage));
-		setHydrated(true);
-	}, []);
+		if (!ready) return;
+		if (!session) {
+			setWorkspace(createEmptyWorkspace());
+			setHydrated(true);
+			return;
+		}
+		let cancelled = false;
+		void fetch('/api/workspace', { cache: 'no-store' })
+			.then((response) => response.json())
+			.then((data: { workspace?: KTrailWorkspace }) => {
+				if (!cancelled && data.workspace) setWorkspace(data.workspace);
+			})
+			.finally(() => {
+				if (!cancelled) setHydrated(true);
+			});
+		return () => {
+			cancelled = true;
+		};
+	}, [ready, session]);
 
-	const persistWorkspace = useCallback(
-		(update: (current: KTrailWorkspace) => KTrailWorkspace) => {
-			setWorkspace((current) =>
-				persistWorkspaceUpdate(window.localStorage, current, update),
-			);
-		},
-		[],
-	);
+	const persistWorkspace = useCallback((update: (current: KTrailWorkspace) => KTrailWorkspace) => {
+		setWorkspace((current) => {
+			const next = update(current);
+			void saveRemote(next);
+			return next;
+		});
+	}, []);
 
 	const loadSample = useCallback(() => {
 		persistWorkspace(() => createSampleWorkspace());
@@ -68,7 +80,9 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
 	);
 
 	const resetWorkspace = useCallback(() => {
-		setWorkspace(() => resetStoredWorkspace(window.localStorage));
+		const empty = createEmptyWorkspace();
+		setWorkspace(empty);
+		void fetch('/api/workspace', { method: 'DELETE' });
 	}, []);
 
 	const value = useMemo<WorkspaceContextValue>(
@@ -80,28 +94,16 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
 			approveClientRequest,
 			resetWorkspace,
 		}),
-		[
-			workspace,
-			hydrated,
-			loadSample,
-			approveClientRequest,
-			resetWorkspace,
-		],
+		[workspace, hydrated, loadSample, approveClientRequest, resetWorkspace],
 	);
 
-	return (
-		<WorkspaceContext.Provider value={value}>
-			{children}
-		</WorkspaceContext.Provider>
-	);
+	return <WorkspaceContext.Provider value={value}>{children}</WorkspaceContext.Provider>;
 }
 
 export function useWorkspace(): WorkspaceContextValue {
 	const context = useContext(WorkspaceContext);
-
 	if (!context) {
-		throw new Error("useWorkspace must be used within WorkspaceProvider");
+		throw new Error('useWorkspace must be used within WorkspaceProvider');
 	}
-
 	return context;
 }

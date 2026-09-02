@@ -7,6 +7,7 @@ import { ProcessStrip } from '@/components/home/process-strip';
 import { PipelineStrip } from '@/components/home/pipeline-strip';
 import { Audiences } from '@/components/home/audiences';
 import { FeaturesGrid } from '@/components/home/features-grid';
+import { Founders } from '@/components/home/founders';
 import { QuoteSlab } from '@/components/home/quote-slab';
 import { PricingPreview } from '@/components/home/pricing-preview';
 import { GetInEarly } from '@/components/home/get-in-early';
@@ -25,6 +26,7 @@ export default function HomePage() {
 			<PipelineStrip />
 			<Audiences />
 			<FeaturesGrid />
+			<Founders />
 			<QuoteSlab />
 			<PricingPreview />
 			<GetInEarly />

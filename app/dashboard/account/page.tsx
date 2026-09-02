@@ -1,20 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { clearSession, getSession } from '@/lib/session';
+import { useAuthSession } from '@/components/auth/AuthSessionProvider';
 import { siteConfig } from '@/config/site';
 
 export default function DashboardAccountPage() {
 	const router = useRouter();
-	const [email, setEmail] = useState('');
+	const { session, refresh } = useAuthSession();
 
-	useEffect(() => {
-		setEmail(getSession()?.email ?? '');
-	}, []);
-
-	function signOut() {
-		clearSession();
+	async function signOut() {
+		await fetch('/api/auth/logout', { method: 'POST' });
+		await refresh();
 		router.replace('/login');
 	}
 
@@ -28,7 +24,7 @@ export default function DashboardAccountPage() {
 			<div className="space-y-4 border border-[var(--color-line)] bg-[var(--color-bg-deep)] p-6 text-sm">
 				<div>
 					<p className="text-[0.6rem] uppercase tracking-[0.2em] text-[var(--color-cream-dim)]">Email</p>
-					<p className="mt-1 text-[var(--color-cream)]">{email || '—'}</p>
+					<p className="mt-1 text-[var(--color-cream)]">{session?.email || '—'}</p>
 				</div>
 				<div>
 					<p className="text-[0.6rem] uppercase tracking-[0.2em] text-[var(--color-cream-dim)]">
@@ -48,11 +44,7 @@ export default function DashboardAccountPage() {
 				</div>
 			</div>
 
-			<button
-				type="button"
-				onClick={signOut}
-				className="btn-secondary"
-			>
+			<button type="button" onClick={signOut} className="btn-secondary">
 				Sign out
 			</button>
 		</div>

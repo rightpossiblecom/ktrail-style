@@ -1,20 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { getSession } from '@/lib/session';
 import { formatNaira } from '@/lib/workspace/operations';
+import { useAuthSession } from '@/components/auth/AuthSessionProvider';
 import { useWorkspace } from '@/components/workspace/WorkspaceProvider';
 
 export default function DashboardOverviewPage() {
-	const [email, setEmail] = useState('');
+	const { session } = useAuthSession();
+	const email = session?.email ?? '';
 	const { workspace, metrics, hydrated } = useWorkspace();
 	const pending = workspace.requests.find((request) => request.status === 'pending');
 	const empty = hydrated && workspace.requests.length === 0 && workspace.bookings.length === 0;
-
-	useEffect(() => {
-		setEmail(getSession()?.email ?? '');
-	}, []);
 
 	return (
 		<div className="space-y-8">

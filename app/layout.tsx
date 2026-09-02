@@ -26,6 +26,7 @@ export const viewport: Viewport = {
 const title = `${siteConfig.brandName} — ${siteConfig.tagline}`;
 
 export const metadata: Metadata = {
+	metadataBase: new URL(siteConfig.url),
 	title: {
 		default: title,
 		template: `%s | ${siteConfig.brandName}`,
